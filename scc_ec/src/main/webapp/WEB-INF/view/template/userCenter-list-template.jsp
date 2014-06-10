@@ -19,6 +19,7 @@
     <script src="${context}/resources/js/html5shiv.js"></script>
     <script src="${context}/resources/js/respond.min.js"></script>
     <![endif]-->
+    <script src="${context}/resources/js/jquery.min.js"></script>
     <tiles:importAttribute name="script"/>
     <c:forEach items="${script}" var="script">
         <script src="${context}${script}"></script>
