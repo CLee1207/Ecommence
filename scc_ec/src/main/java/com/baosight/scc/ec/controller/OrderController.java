@@ -70,9 +70,6 @@ public class OrderController {
         String sessionId = request.getRequestedSessionId();
         Map<String,List<CartLine>> cartLineMap = (Map<String,List<CartLine>>)request.getSession().getAttribute("cart_"+sessionId);
         if(cartLineMap == null || cartLineMap.size() == 0){
-            //如果session里的购物车为空则提示
-//                redirectAttributes.addFlashAttribute("message", "购物车中没有商品，请添加商品到购物车");
-//                return "";
             return CART_LIST;
         }
         EcUser user = userContext.getCurrentUser();
