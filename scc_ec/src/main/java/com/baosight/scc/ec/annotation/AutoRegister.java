@@ -13,4 +13,5 @@ import java.lang.annotation.Target;
 @Target({ ElementType.FIELD, ElementType.PARAMETER, ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 @Qualifier
+//asdfasdfasdfasd
 public @interface AutoRegister {}
