@@ -19,8 +19,9 @@
     <script src="${context}/resources/js/html5shiv.js"></script>
     <script src="${context}/resources/js/respond.min.js"></script>
     <![endif]-->
-    <c:forEach var="item" items="${script}">
-        <script src="${context}${item}"></script>
+    <tiles:importAttribute name="script"/>
+    <c:forEach items="${script}" var="script">
+        <script src="${context}${script}"></script>
     </c:forEach>
 </head>
 
