@@ -110,7 +110,7 @@ public class OrderItemServiceImpl implements OrderItemService {
     /**
      * 更新订单状态
      * @param orderId   订单id
-      * @param status   更新状态
+     * @param status   更新状态
      * @return
      */
     public String updateStatus(String orderId,String status){
@@ -123,34 +123,15 @@ public class OrderItemServiceImpl implements OrderItemService {
             DateTime dateTime = new DateTime();
             Calendar calendar = dateTime.toCalendar(Locale.SIMPLIFIED_CHINESE);
             //如果是取消交易、发货、确认收货等操作，记录相应时间
-            if(status.equals(OrderState.) || status == 2){
+            if(status.equals(OrderState.BUYER_APPRAISE.toString()) || status.equals(OrderState.SELLER_APPRAISE.toString())){
                 orderItemOld.setCancelTime(calendar);
-            }else if(status == 3){
+            }else if(status.equals(OrderState.GOODS_DELIVER.toString())){
                 orderItemOld.setDeliverTime(calendar);
-            }else if(status == 4){
+            }else if(status.equals(OrderState.GOODS_RECEIVE.toString())){
                 orderItemOld.setReceiveTime(calendar);
             }
             return "success";
-            }
-//        OrderItem orderItemOld = findById(orderId);
-//        //更新状态前校验是否已更新
-//        if(status <= orderItemOld.getStatus()){
-//            return "statusError";
-//        }else{
-//            orderItemOld.setStatus(status);
-//            DateTime dateTime = new DateTime();
-//            Calendar calendar = dateTime.toCalendar(Locale.SIMPLIFIED_CHINESE);
-//            //如果是取消交易、发货、确认收货等操作，记录相应时间
-//            if(status == 1 || status == 2){
-//                orderItemOld.setCancelTime(calendar);
-//            }else if(status == 3){
-//                orderItemOld.setDeliverTime(calendar);
-//            }else if(status == 4){
-//                orderItemOld.setReceiveTime(calendar);
-//            }
-//            return "success";
-//        }
-        return null;
+        }
     }
 
     @Override
