@@ -13,7 +13,7 @@ public class Shop {
     @Id
     private String id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private EcUser user;
 

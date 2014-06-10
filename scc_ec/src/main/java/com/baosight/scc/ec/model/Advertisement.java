@@ -32,7 +32,7 @@ public class Advertisement implements Serializable {
 
     private int isValid;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "position_id")
     private AdvertisementPosition advertisementPosition;
 

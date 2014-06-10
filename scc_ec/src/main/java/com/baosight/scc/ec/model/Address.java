@@ -36,7 +36,7 @@ public class Address implements Serializable{
 
     private String childPhone;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private EcUser user;
 

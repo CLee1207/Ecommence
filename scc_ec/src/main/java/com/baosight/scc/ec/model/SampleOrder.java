@@ -25,18 +25,18 @@ public class SampleOrder implements Serializable {
     @Id
     private String id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private EcUser creator;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
     private Item item;  //调样单对应的商品
 
     @Enumerated(EnumType.STRING)
     private SampleOrderState state;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "address_id")
     @NotNull
     private Address address;
@@ -50,7 +50,7 @@ public class SampleOrder implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar deliveryTime;  //交货日期
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "provider_id")
     private EcUser provider;
 

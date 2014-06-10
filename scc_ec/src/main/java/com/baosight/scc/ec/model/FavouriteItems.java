@@ -58,11 +58,11 @@ public class FavouriteItems {
     @Temporal(TemporalType.TIMESTAMP)
     private Calendar createdTime;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private EcUser user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id", insertable = false, updatable = false)
     private Item item;
 

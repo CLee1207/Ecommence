@@ -13,7 +13,7 @@ public class DimensionRate implements Serializable {
 
     @Id
     private Integer id;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private EcUser seller; //卖家
     private Double attitude; //服务态度率

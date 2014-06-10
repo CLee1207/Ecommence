@@ -1,7 +1,5 @@
 package com.baosight.scc.ec.model;
 
-import com.baosight.scc.ec.utils.UserAuthorityUtils;
-import org.hibernate.annotations.Cascade;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
@@ -38,7 +36,7 @@ public class EcUser extends User implements Serializable {
     @OneToMany(mappedBy = "user")
     private List<Address> addresses = new ArrayList<Address>();
 
-    @OneToOne(cascade = {CascadeType.ALL})
+    @OneToOne(cascade = {CascadeType.ALL},fetch = FetchType.LAZY)
     @JoinColumn(name = "defaultAddress_id")
     private Address defaultAddress;
 

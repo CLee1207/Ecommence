@@ -21,11 +21,11 @@ public class OrderLine {
     @Transient
     private int num;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="orderItem_id")
     private OrderItem orderItem;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="item_id")
     private Item item;
 

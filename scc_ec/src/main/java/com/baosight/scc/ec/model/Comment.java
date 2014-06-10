@@ -21,15 +21,15 @@ public class Comment implements Serializable {
     @Id
     private String id;  //pk
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
     private Item item;  //对应的商品
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="order_id")
     private OrderItem orderItem; //对应的订单
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private EcUser user;    //评价人
 

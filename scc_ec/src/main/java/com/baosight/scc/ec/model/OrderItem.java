@@ -25,11 +25,11 @@ public class OrderItem {
     @OneToMany(mappedBy = "orderItem",cascade = {CascadeType.ALL})
     private List<OrderLine> lines=new ArrayList<OrderLine>();   //订单商品列表
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="buyer_id")
     private EcUser buyer;    //买家
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="seller_id")
     private EcUser seller;    //卖家
 
@@ -46,7 +46,7 @@ public class OrderItem {
     private Calendar receiveTime;   //收货时间
 
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "orderAddress_id")
     private OrderAddress orderAddress;  //订单地址
 

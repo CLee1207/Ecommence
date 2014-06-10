@@ -25,15 +25,15 @@ public class FabricSource implements Serializable {
     @OneToMany(mappedBy = "parent")
     private List<FabricSource> detailSources;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
     private FabricSource parent;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "createdBy")
     private EcUser createdBy;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "updatedBy")
     private EcUser updatedBy;
 

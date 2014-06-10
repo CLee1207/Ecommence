@@ -26,15 +26,15 @@ public class FabricCategory implements Serializable{
     @OneToMany(mappedBy = "parentCategory",cascade = {CascadeType.ALL})
     private List<FabricCategory> secondCategory=new ArrayList<FabricCategory>();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="parent_id")
     private FabricCategory parentCategory;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "createdBy")
     private EcUser createdBy;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "updatedBy")
     private EcUser updatedBy;
 

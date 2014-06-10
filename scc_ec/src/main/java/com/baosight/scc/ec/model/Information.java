@@ -30,11 +30,11 @@ public class Information implements Serializable {
 
     private int isValid;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private InformationCategory informationCategory;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private EcUser createdBy;
 

@@ -33,15 +33,15 @@ public class MaterialCategory implements Serializable{
     @OneToMany(mappedBy = "parentCategory")
     private List<MaterialCategory> secondCategory=new ArrayList<MaterialCategory>();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="parent_id")
     private MaterialCategory parentCategory;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "createdBy")
     private EcUser createdBy;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "updatedBy")
     private EcUser updatedBy;
 

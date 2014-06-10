@@ -24,12 +24,12 @@ public class DemandOrder implements Serializable {
     @NotNull
     private String title;
 
-    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+    @ManyToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST},fetch = FetchType.LAZY)
     @JoinColumn(name = "address_id")
     @NotNull
     private Address receiveAddress;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private EcUser createdBy;   //创建人
 
