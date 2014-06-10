@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+    <!-- Default list template-->
+    <definition name="list_template" template="/WEB-INF/view/template/userCenter-list-template.jsp">
+        <put-attribute name="header" value="/WEB-INF/view/template/header.jsp"></put-attribute>
+        <put-attribute name="menu" value="/WEB-INF/view/fabric/menu.jsp"></put-attribute>
+        <put-attribute name="footer" value="/WEB-INF/view/template/footer.jsp"></put-attribute>
+        <put-attribute name="newItem" value="/WEB-INF/view/fabric/newItem.jsp"></put-attribute>
+    </definition>
+
+    <!--我发布的面料列表-->
+    <definition name="fabric_list" extends="list_template">
+        <put-attribute name="main" value="/WEB-INF/view/fabric/itemList.jsp"></put-attribute>
+        <put-list-attribute name="script">
+            <add-attribute value="/resources/js/demandOrderList.js"></add-attribute>
+        </put-list-attribute>
+    </definition>
+
+    <!--面料详细-->
+    <definition name="fabric_view" template="/WEB-INF/view/fabric/fabricView.jsp">
+        <put-list-attribute name="script">
+            <add-attribute value="/resources/js/fabric/fabricView.js"></add-attribute>
+        </put-list-attribute>
+    </definition>
+
+    <!--收藏的商品-->
+    <definition name="favouriteList" extends="list_template">
+        <put-attribute name="main" value="/WEB-INF/view/favouriteItemList.jsp"></put-attribute>
+        <put-list-attribute name="script"></put-list-attribute>
+    </definition>
+
+    <!--收藏的店铺-->
+    <definition name="favouriteShopList" extends="list_template">
+        <put-attribute name="main" value="/WEB-INF/view/favouriteShopList.jsp"></put-attribute>
+        <put-list-attribute name="script"></put-list-attribute>
+    </definition>
+
+    <!---->
+    <definition name="fabric_selectCategory">
+        <put-attribute name="main" value="/WEB-INF/view/fabric/fabricSelectCategory.jsp"></put-attribute>
+        <put-list-attribute name="script"></put-list-attribute>
+    </definition>
+
+    <!---->
+    <definition name="fabric_fillContent">
+        <put-attribute name="header" value="/WEB-INF/view/template/header.jsp"></put-attribute>
+        <put-attribute name="main" value="/WEB-INF/view/fabric/fabricFillContent.jsp"></put-attribute>
+        <put-list-attribute name="script"></put-list-attribute>
+    </definition>
+</tiles-definitions>

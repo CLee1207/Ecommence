@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+    <on-start>
+        <set name="flashScope.fabricId" value="requestParameters.id"/>
+        <evaluate expression="fabricController.editForm(flashScope.fabricId)" result="flowScope.fabric"></evaluate>
+    </on-start>
+
+    <view-state id="selectCategory" view="fabric_selectCategory" model="fabric">
+        <on-render>
+            <evaluate expression="fabricController.initMainUserType()" result="requestScope.mainTypes"></evaluate>
+            <evaluate expression="fabricController.initFabricCategory()" result="requestScope.categoies"></evaluate>
+            <evaluate expression="fabricController.initSource()" result="requestScope.sources"></evaluate>
+            <evaluate expression="fabricController.initDetailSource()" result="requestScope.detailSources"></evaluate>
+        </on-render>
+        <transition on="next" to="fillContent" validate="true"></transition>
+    </view-state>
+
+    <view-state id="fillContent" view="fabric_fillContent" model="fabric">
+        <transition on="finish" to="end" validate="true">
+            <evaluate expression="fabricController.updateFabric(flowScope.fabric)"></evaluate>
+        </transition>
+        <transition on="temporary" to="end" validate="true">
+            <evaluate expression="fabricController.tempUpdateFabric(flowScope.fabric)"></evaluate>
+        </transition>
+        <transition on="previous" to="selectCategory"></transition>
+    </view-state>
+
+    <end-state id="end" view="redirect:/sellerCenter/fabrics"/>
+</flow>
