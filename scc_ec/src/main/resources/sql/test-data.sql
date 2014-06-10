@@ -44,6 +44,8 @@ INSERT INTO T_ec_FabricSource (id, name, parent_id) VALUES ('6', 'sourcechild2-2
 --测试面料
 INSERT INTO T_ec_Fabric (id, category_id, source_id, detailSource_id) VALUES
   ('1', '2', '1', '3');
+INSERT INTO T_ec_Fabric (id, category_id) VALUES ('2', '2');
+INSERT INTO T_ec_Fabric (id, category_id) VALUES ('3', '2');
 INSERT INTO T_ec_Fabric (id, category_id) VALUES ('4', '3');
 INSERT INTO T_ec_Fabric (id, category_id) VALUES ('5', '4');
 
@@ -56,7 +58,10 @@ INSERT INTO T_ec_Material (id, category_id) VALUES ('6', '2');
 INSERT INTO T_ec_fabric_range (fabric_id, unit_from, price) VALUES ('1', 5, 20);
 INSERT INTO T_ec_fabric_range (fabric_id, unit_from, price) VALUES ('1', 10, 15);
 INSERT INTO T_ec_fabric_range (fabric_id, unit_from, price) VALUES ('1', 20, 10);
-INSERT INTO T_ec_fabric_range (fabric_id, unit_from, price) VALUES ('4', 30, 40);
+INSERT INTO T_ec_fabric_range (fabric_id, unit_from, price) VALUES ('2', 30, 40);
+INSERT INTO T_ec_fabric_range (fabric_id, unit_from, price) VALUES ('2', 40, 35);
+INSERT INTO T_ec_fabric_range (fabric_id, unit_from, price) VALUES ('3', 30, 40);
+INSERT INTO T_ec_fabric_range (fabric_id, unit_from, price) VALUES ('3', 50, 70);
 INSERT INTO T_ec_fabric_range (fabric_id, unit_from, price) VALUES ('4', 40, 35);
 INSERT INTO T_ec_fabric_range (fabric_id, unit_from, price) VALUES ('5', 30, 40);
 INSERT INTO T_ec_fabric_range (fabric_id, unit_from, price) VALUES ('5', 40, 35);

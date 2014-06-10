@@ -67,6 +67,4 @@
 <!-- /.Footer -->
 
 <!-- /.Site -->
-
 <script type="text/javascript" id="include" src="/resources/js/include.js" data-config="/resources/config"></script>
-

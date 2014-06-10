@@ -117,14 +117,11 @@ public class CartLineController {
                         resultMap.put("summaryNew", quantityNew*price);
                     }else{
                         //购物车中没有此商品时，新增一件该商品
-                        EcUser supplier = new EcUser();
                         if(itemType.equals("M")){
                             Material material =  materialService.getMaterialInfo(itemId);
-                            supplier = material.getCreatedBy();
                             cartLine = new CartLine(material);
                         }else if(itemType.equals("F")){
                             Fabric fabric = fabricService.findById(itemId);
-                            supplier = fabric.getCreatedBy();
                             cartLine = new CartLine(fabric);
                         }
                         Map<Double,Double> priceRanges = cartLine.getPriceRange();
@@ -152,14 +149,11 @@ public class CartLineController {
                     cartLineMap.put(sellerId,cartLineList);
                 }else{
                     //购物车中没有此商品时，新增一件该商品
-                    EcUser supplier = new EcUser();
                     if(itemType.equals("M")){
                         Material material =  materialService.getMaterialInfo(itemId);
-                        supplier = material.getCreatedBy();
                         cartLine = new CartLine(material);
                     }else if(itemType.equals("F")){
                         Fabric fabric = fabricService.findById(itemId);
-                        supplier = fabric.getCreatedBy();
                         cartLine = new CartLine(fabric);
                     }
                     Map<Double,Double> priceRanges = cartLine.getPriceRange();

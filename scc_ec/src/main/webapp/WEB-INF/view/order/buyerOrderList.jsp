@@ -38,22 +38,22 @@
 
             <td>
                 <c:choose>
-                    <c:when test="${orderItem.status == 0}">等待卖家发货</c:when>
-                    <c:when test="${orderItem.status == 1}">已取消</c:when>
-                    <c:when test="${orderItem.status == 2}">卖家已取消</c:when>
-                    <c:when test="${orderItem.status == 3}">卖家已发货</c:when>
-                    <c:when test="${orderItem.status == 4}">已确认收货</c:when>
-                    <c:when test="${orderItem.status == 5}">买家已评价</c:when>
-                    <c:when test="${orderItem.status == 6}">卖家已评价</c:when>
-                    <c:when test="${orderItem.status == 7}">双方已评价</c:when>
+                    <c:when test="${orderItem.status == 'WAIT_GOODS_SEND'}">等待卖家发货</c:when>
+                    <c:when test="${orderItem.status == 'BUYER_CANCEL'}">已取消</c:when>
+                    <c:when test="${orderItem.status == 'SELLER_CANCEL'}">卖家已取消</c:when>
+                    <c:when test="${orderItem.status == 'GOODS_DELIVER'}">卖家已发货</c:when>
+                    <c:when test="${orderItem.status == 'GOODS_RECEIVE'}">已确认收货</c:when>
+                    <c:when test="${orderItem.status == 'BUYER_APPRAISE'}">买家已评价</c:when>
+                    <c:when test="${orderItem.status == 'SELLER_APPRAISE'}">卖家已评价</c:when>
+                    <c:when test="${orderItem.status == 'FINISH'}">双方已评价</c:when>
                 </c:choose>
                 <a href="/orderCenter/buyerViewOrder/${orderItem.id}">订单详情</a>
             </td>
             <td>
                 <c:choose>
-                    <c:when test="${orderItem.status == 0}"><input type="button" class="optStatus"  data-id="${orderItem.id}" data-status="1" value="取消"></c:when>
-                    <c:when test="${orderItem.status == 3}"><input type="button" class="optStatus"  data-id="${orderItem.id}" data-status="4" value="确认收货"></c:when>
-                    <c:when test="${orderItem.status == 4}"><input type="button" class="aLabel"  data-id="${orderItem.id}" value="评价"></c:when>
+                    <c:when test="${orderItem.status == 'WAIT_GOODS_SEND'}"><input type="button" class="optStatus"  data-id="${orderItem.id}" data-status="1" value="取消"></c:when>
+                    <c:when test="${orderItem.status == 'GOODS_DELIVER'}"><input type="button" class="optStatus"  data-id="${orderItem.id}" data-status="4" value="确认收货"></c:when>
+                    <c:when test="${orderItem.status == 'GOODS_RECEIVE'}"><input type="button" class="aLabel"  data-id="${orderItem.id}" value="评价"></c:when>
                 </c:choose>
             </td>
         </tr>

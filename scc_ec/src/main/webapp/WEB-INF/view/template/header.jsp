@@ -92,7 +92,7 @@
                                 </ul>
                                 <div class="balance">
                                     <div>共<bdo>2</bdo>件商品　共计<b class="price">680</b></div>
-                                    <a class="button button-deep" href="#">去购物车结算</a>
+                                    <a class="button button-deep" href="/orderCenter/shopCart">去购物车结算</a>
                                 </div>
                             </dd>
                         </dl>
