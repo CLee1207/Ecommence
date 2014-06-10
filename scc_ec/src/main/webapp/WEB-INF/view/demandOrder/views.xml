@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+    <!-- Default Main Template -->
+    <definition name="demandOrder.mainTemplate" template="/WEB-INF/templates/sellerCenterMain.jsp">
+    </definition>
+
+    <!--demandOrder detail edit page-->
+    <definition name="demandOrder.edit" template="/WEB-INF/templates/sellerCenterMain.jsp">
+        <put-attribute name="main" value="/WEB-INF/view/demandOrder/create.jsp"></put-attribute>
+        <put-list-attribute name="script"> </put-list-attribute>
+    </definition>
+
+    <!--demandOrder use~s list-->
+    <definition name="demandOrder.releasedList" template="/WEB-INF/templates/sellerCenterMain.jsp">
+        <put-attribute name="main" value="/WEB-INF/view/demandOrder/list.jsp"></put-attribute>
+        <put-list-attribute name="script"> </put-list-attribute>
+    </definition>
+
+</tiles-definitions>

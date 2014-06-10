@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+    <!-- Default Main Template -->
+    <definition name="sampleOrder_template" template="/WEB-INF/templates/sellerCenterMain.jsp">
+    </definition>
+
+    <!--sample order create form-->
+    <definition name="sampleOrder_create" extends="sampleOrder_template">
+        <put-attribute name="main" value="/WEB-INF/view/sampleOrder/create.jsp"></put-attribute>
+        <put-list-attribute name="script"> </put-list-attribute>
+    </definition>
+
+    <!--sample order view-->
+    <definition name="sampleOrder_view" extends="sampleOrder_template">
+        <put-attribute name="main" value="/WEB-INF/view/sampleOrder/view.jsp"></put-attribute>
+        <put-list-attribute name="script"> </put-list-attribute>
+    </definition>
+
+    <!--seller_list-->
+    <definition name="sampleOrder_seller_list" extends="sampleOrder_template">
+        <put-attribute name="main" value="/WEB-INF/view/sampleOrder/sellerList.jsp"></put-attribute>
+        <put-list-attribute name="script"> </put-list-attribute>
+    </definition>
+
+    <!--provider_received_list-->
+    <definition name="sampleOrder_buyer_list" extends="sampleOrder_template">
+        <put-attribute name="main" value="/WEB-INF/view/sampleOrder/sellerList.jsp"></put-attribute>
+        <put-list-attribute name="script"> </put-list-attribute>
+    </definition>
+
+</tiles-definitions>
