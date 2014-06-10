@@ -64,7 +64,7 @@ public class Material extends Item {
     @Column(name = "price")
     private Map<Double, Double> ranges = new HashMap<Double, Double>();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private MaterialCategory category;
 
