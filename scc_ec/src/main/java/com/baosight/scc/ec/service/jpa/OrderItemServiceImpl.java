@@ -122,7 +122,7 @@ public class OrderItemServiceImpl implements OrderItemService {
             orderItemOld.setStatus(status);
             DateTime dateTime = new DateTime();
             Calendar calendar = dateTime.toCalendar(Locale.SIMPLIFIED_CHINESE);
-            //如果是取消交易、发货、确认收货等操作，记录相应时间
+            //如果是取消交易、发货、确认收货等操作，记录相应时间,更新状态
             if(status.equals(OrderState.BUYER_APPRAISE.toString()) || status.equals(OrderState.SELLER_APPRAISE.toString())){
                 orderItemOld.setCancelTime(calendar);
             }else if(status.equals(OrderState.GOODS_DELIVER.toString())){
