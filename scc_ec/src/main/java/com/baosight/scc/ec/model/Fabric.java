@@ -80,11 +80,11 @@ public class Fabric extends Item {
     @Transient
     private Double[] values;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "source_id")
     private FabricSource source;    //面料成分一级
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "detailSource_id")
     private FabricSource sourceDetail;
 
@@ -101,7 +101,7 @@ public class Fabric extends Item {
     @OrderBy(value = "orderNum asc")
     private List<CultureImage> images = new ArrayList<CultureImage>();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private FabricCategory category;
 

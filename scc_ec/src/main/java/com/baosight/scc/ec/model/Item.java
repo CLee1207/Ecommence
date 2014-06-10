@@ -33,7 +33,7 @@ public class Item implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     protected Calendar createdTime;		//创建日期
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="createdBy")
     protected EcUser createdBy;
 
