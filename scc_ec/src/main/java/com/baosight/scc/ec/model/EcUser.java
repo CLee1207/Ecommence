@@ -101,6 +101,9 @@ public class EcUser extends User implements Serializable {
 
     private String companyAddress;
 
+    @OneToOne
+    private CompositeScore compositeScore;
+
     public String getType() {
         return type;
     }
@@ -340,6 +343,14 @@ public class EcUser extends User implements Serializable {
 
     public void setCompanyAddress(String companyAddress) {
         this.companyAddress = companyAddress;
+    }
+
+    public CompositeScore getCompositeScore() {
+        return compositeScore;
+    }
+
+    public void setCompositeScore(CompositeScore compositeScore) {
+        this.compositeScore = compositeScore;
     }
 
     @Override
