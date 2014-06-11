@@ -3,6 +3,7 @@ window.include(
 	[
 		'js/jquery.min',
 		'js/jquery.mousewheel.min',
+		'plugin/datepicker/jquery-ui.custom.min',
 		'plugin/fancybox/jquery.fancybox.pack',
 		'js/library',
 		'js/action'
