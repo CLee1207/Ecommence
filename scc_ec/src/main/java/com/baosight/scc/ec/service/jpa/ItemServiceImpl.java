@@ -128,7 +128,15 @@ public class ItemServiceImpl implements ItemService{
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Page<Item> findByCreatedByAndState(EcUser user, ItemState state, Pageable pageable) {
         return ir.findByCreatedByAndState(user,state,pageable);
+    }
+
+    @Override
+    public Item updateState(Item item) {
+        Item source=em.find(Item.class,item.getId());
+        source.setState(item.getState());
+        return source;
     }
 }

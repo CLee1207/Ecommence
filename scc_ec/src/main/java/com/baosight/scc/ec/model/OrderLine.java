@@ -10,7 +10,8 @@ import javax.persistence.*;
 @Entity
 @Table(name="T_ec_OrderLine")
 //订单明细
-@NamedQueries({@NamedQuery(name="OrderLine.findTest",query="select a,count(a.item)   from OrderLine a left join a.item b ")})
+@NamedQueries({@NamedQuery(name="OrderLine.findTest",query="select a,count(a.item) from OrderLine a left join a.item b "),
+@NamedQuery(name = "OrderLine.countByStateAndItem",query="select count(o) from OrderLine o where o.item=:item and o.item.state<>'FINISH'")})
 public class OrderLine {
     @Id
     private String id;

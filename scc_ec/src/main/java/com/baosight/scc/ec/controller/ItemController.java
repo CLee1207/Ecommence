@@ -3,19 +3,22 @@ package com.baosight.scc.ec.controller;
 import com.baosight.scc.ec.model.EcUser;
 import com.baosight.scc.ec.model.Fabric;
 import com.baosight.scc.ec.model.Item;
+import com.baosight.scc.ec.model.Message;
 import com.baosight.scc.ec.security.UserContext;
 import com.baosight.scc.ec.service.ItemService;
+import com.baosight.scc.ec.service.OrderLineService;
 import com.baosight.scc.ec.type.ItemState;
 import com.baosight.scc.ec.web.EcGrid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Locale;
 
 /**
  * Created by zodiake on 2014/6/9.
@@ -26,6 +29,10 @@ public class ItemController extends AbstractController {
     private UserContext userContext;
     @Autowired
     private ItemService itemService;
+    @Autowired
+    private OrderLineService orderLineService;
+    @Autowired
+    private MessageSource messageSource;
 
     private final static String FABRIC_LIST = "fabric_list";
 
@@ -63,5 +70,18 @@ public class ItemController extends AbstractController {
         uiModel.addAttribute("grid", grid);
         uiModel.addAttribute("type", type);
         return FABRIC_LIST;
+    }
+
+    @RequestMapping(value = "/sellerCenter/items/{id}", method = RequestMethod.PUT,produces = "application/json")
+    @ResponseBody
+    public Message updateState(@PathVariable("id") String id, Locale locale) {
+        Item item = new Item();
+        item.setId(id);
+        if (orderLineService.countByStateFinishAndItem(item)) {
+            return new Message("fail", messageSource.getMessage("item_down_fail", new Object[]{}, locale));
+        }
+        item.setState(ItemState.下架);
+        itemService.updateState(item);
+        return new Message("success", messageSource.getMessage("save_success", new Object[]{}, locale));
     }
 }

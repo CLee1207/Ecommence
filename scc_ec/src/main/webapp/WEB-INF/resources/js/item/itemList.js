@@ -3,14 +3,19 @@
  */
 //123
 $(function () {
-    $('a.down').click(function (event) {
-        var src=$(this);
+    $('a').click(function (event) {
+        var src = $(this);
         var id = src.attr('data-id');
         $.ajax({
             method: 'put',
-            url: '/sellerCenter/Item/' + id,
-            success:function(){
-               this.parent().prev().text('下架');
+            url: '/sellerCenter/items/' + id,
+            success: function (data) {
+                if (data.type == 'success') {
+                    src.text('编辑');
+                    src.attr('href','/sellerCenter/fabricEdit?id='+id);
+                }else{
+                    alert(data.content);
+                }
             }
         });
     });

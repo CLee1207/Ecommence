@@ -16,4 +16,5 @@ public interface OrderLineRepository extends PagingAndSortingRepository<OrderLin
     
   //根据产品id，查看交易记录
   	Page<OrderLine> findByItem(Item item,Pageable pageable);
+
 }

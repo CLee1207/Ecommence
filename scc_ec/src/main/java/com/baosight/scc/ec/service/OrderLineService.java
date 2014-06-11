@@ -1,12 +1,12 @@
 package com.baosight.scc.ec.service;
 
-import java.util.List;
-
+import com.baosight.scc.ec.model.Item;
 import com.baosight.scc.ec.model.OrderItem;
 import com.baosight.scc.ec.model.OrderLine;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import java.util.List;
 
 /**
  * Created by Charles on 2014/5/16.
@@ -28,4 +28,6 @@ public interface OrderLineService {
     Page<OrderLine> findByItem(OrderItem item,Pageable pageable);
     
     List<OrderLine> findTest();
+
+    boolean countByStateFinishAndItem(Item item);
 }

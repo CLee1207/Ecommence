@@ -45,4 +45,7 @@ public interface ItemService {
     public Page<Item> findByCreatedBy(EcUser user ,Pageable pageable);
 
     public Page<Item> findByCreatedByAndState(EcUser user ,ItemState state,Pageable pageable);
+
+    public Item updateState(Item item);
+
 }

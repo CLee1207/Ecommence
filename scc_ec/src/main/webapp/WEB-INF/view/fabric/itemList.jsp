@@ -56,7 +56,7 @@
                         <a type="button" class="button button-deep">删除</a>
                     </c:if>
                     <c:if test="${item.state=='出售中'}">
-                        <a type="button" class="button button-deep down">下架</a>
+                        <a type="button" data-id="${item.id}" class="button button-deep down">下架</a>
                     </c:if>
                     <c:if test="${item.state=='下架'}">
                         <a type="button" class="button button-deep"
