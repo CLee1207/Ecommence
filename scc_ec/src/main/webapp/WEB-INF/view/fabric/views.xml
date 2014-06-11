@@ -21,11 +21,10 @@
         </put-list-attribute>
     </definition>
 
-    <!--面料详细-->
-    <definition name="fabric_view" template="/WEB-INF/view/fabric/fabricView.jsp">
-        <put-list-attribute name="script">
-            <add-attribute value="/resources/js/fabric/fabricView.js"></add-attribute>
-        </put-list-attribute>
+    <!--面料详细 template-->
+    <definition name="fabric_view" template="/WEB-INF/view/template/detail-view.jsp">
+        <put-attribute name="header" value="/WEB-INF/view/template/header.jsp"></put-attribute>
+        <put-attribute name="footer" value="/WEB-INF/view/template/footer.jsp"></put-attribute>
     </definition>
 
     <!--收藏的商品-->

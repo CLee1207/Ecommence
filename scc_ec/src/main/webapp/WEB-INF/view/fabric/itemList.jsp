@@ -53,10 +53,10 @@
                 <td align="center">
                     <c:if test="${item.state=='草稿'}">
                         <a type="button" class="button button-deep">编辑</a>
-                        <button type="button" class="button button-deep">删除</button>
+                        <a type="button" class="button button-deep">删除</a>
                     </c:if>
                     <c:if test="${item.state=='出售中'}">
-                        <button type="button" class="button button-deep">下架</button>
+                        <a type="button" class="button button-deep down">下架</a>
                     </c:if>
                     <c:if test="${item.state=='下架'}">
                         <a type="button" class="button button-deep"
