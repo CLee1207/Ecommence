@@ -22,17 +22,6 @@
                     <a data-id="${category.id}">${category.name}</a>
                 </li>
             </c:forEach>
-            <li>
-                <a href="#">染色类</a>
-                <div>
-                    <a href="#">常规染色</a>
-                </div>
-            </li>
-            <li><a href="#">色织类</a></li>
-            <li><a href="#">印花类</a></li>
-            <li><a href="#">提花类</a></li>
-            <li><a href="#">纱线工艺</a></li>
-            <li><a href="#">常见面料</a></li>
         </ul>
 
     </dd>

@@ -97,6 +97,10 @@ public class EcUser extends User implements Serializable {
     @OneToMany(mappedBy = "user")
     private List<SellerCredit> sellerCredits = new ArrayList<SellerCredit>();
 
+    private String companyName;
+
+    private String companyAddress;
+
     public String getType() {
         return type;
     }
@@ -272,6 +276,70 @@ public class EcUser extends User implements Serializable {
 
     public void setSellerCredits(List<SellerCredit> sellerCredits) {
         this.sellerCredits = sellerCredits;
+    }
+
+    public List<FabricCategory> getFabricCategoryListCreatedBy() {
+        return fabricCategoryListCreatedBy;
+    }
+
+    public void setFabricCategoryListCreatedBy(List<FabricCategory> fabricCategoryListCreatedBy) {
+        this.fabricCategoryListCreatedBy = fabricCategoryListCreatedBy;
+    }
+
+    public List<MaterialCategory> getMaterialCategoryListCreatedBy() {
+        return materialCategoryListCreatedBy;
+    }
+
+    public void setMaterialCategoryListCreatedBy(List<MaterialCategory> materialCategoryListCreatedBy) {
+        this.materialCategoryListCreatedBy = materialCategoryListCreatedBy;
+    }
+
+    public List<FabricCategory> getFabricCategoryListUpdatedBy() {
+        return fabricCategoryListUpdatedBy;
+    }
+
+    public void setFabricCategoryListUpdatedBy(List<FabricCategory> fabricCategoryListUpdatedBy) {
+        this.fabricCategoryListUpdatedBy = fabricCategoryListUpdatedBy;
+    }
+
+    public List<MaterialCategory> getMaterialCategoryListUpdatedBy() {
+        return materialCategoryListUpdatedBy;
+    }
+
+    public void setMaterialCategoryListUpdatedBy(List<MaterialCategory> materialCategoryListUpdatedBy) {
+        this.materialCategoryListUpdatedBy = materialCategoryListUpdatedBy;
+    }
+
+    public List<Shop> getShops() {
+        return shops;
+    }
+
+    public void setShops(List<Shop> shops) {
+        this.shops = shops;
+    }
+
+    public List<FavouriteShops> getFavouriteShops() {
+        return favouriteShops;
+    }
+
+    public void setFavouriteShops(List<FavouriteShops> favouriteShops) {
+        this.favouriteShops = favouriteShops;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getCompanyAddress() {
+        return companyAddress;
+    }
+
+    public void setCompanyAddress(String companyAddress) {
+        this.companyAddress = companyAddress;
     }
 
     @Override

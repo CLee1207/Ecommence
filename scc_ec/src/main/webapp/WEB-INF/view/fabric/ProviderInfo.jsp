@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- /.box -->
 <dl class="business-board box">
@@ -15,7 +16,7 @@
         <ul>
             <li>
                 <label>公司名称：</label>
-                <span>海蓝纺织有限公司</span>
+                <span>${fabric.createdBy.}</span>
             </li>
             <li>
                 <label>公司地址：</label>
