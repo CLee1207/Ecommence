@@ -58,6 +58,7 @@ public class EcUser extends User implements Serializable {
     @OneToMany(mappedBy = "createdBy")
     private List<Information> informations = new ArrayList<Information>();
 
+
     @Embedded
     private PreferFabricCategory preferFabricCategory = new PreferFabricCategory();
 
