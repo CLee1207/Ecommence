@@ -103,7 +103,7 @@ public class EcUser extends User implements Serializable {
 
     private String url;//公司主页
 
-    @OneToOne
+    @OneToOne(mappedBy = "user")
     private CompositeScore compositeScore;
 
     public String getType() {

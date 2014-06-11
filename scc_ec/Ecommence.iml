@@ -23,8 +23,8 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="" />
         <datasource-mapping>
-          <factory-entry name="ec" value="9ad50cbd-1aca-4ced-a77d-6c0d2e896634" />
-          <factory-entry name="emf" value="9ad50cbd-1aca-4ced-a77d-6c0d2e896634" />
+          <factory-entry name="ec" value="193c5b53-64a6-4391-9e63-9b9b6139bcf6" />
+          <factory-entry name="emf" value="193c5b53-64a6-4391-9e63-9b9b6139bcf6" />
         </datasource-mapping>
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/META-INF/persistence.xml" />
       </configuration>

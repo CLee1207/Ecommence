@@ -231,6 +231,7 @@ public class FabricController extends AbstractController{
 		grid.setTotalRecords(fabricPage.getTotalElements());
 		//传递数据到页面
 		uiModel.addAttribute("grid", grid);
+        uiModel.addAttribute("id", id);
     	return FABRIC_ORDERS;
     }
 

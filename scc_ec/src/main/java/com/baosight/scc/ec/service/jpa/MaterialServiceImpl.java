@@ -138,7 +138,7 @@ public class MaterialServiceImpl implements MaterialService {
         EcUser sourUser=em.find(EcUser.class,material.getCreatedBy().getId());
 
         if (material.getImages().size() != 0)
-            material.setCoverImage(material.getImages().get(0).getLocation());
+            material.setCoverImage(material.getImages().get(0).getLocation600());
 
         if (!sourUser.getPreferMaterialCategory().getCategories().contains(material.getCategory())) {
             sourUser.getPreferMaterialCategory().getCategories().add(material.getCategory());
@@ -186,7 +186,7 @@ public class MaterialServiceImpl implements MaterialService {
         EcUser sourUser=em.find(EcUser.class,material.getCreatedBy().getId());
 
         if (material.getImages().size() != 0)
-            material.setCoverImage(material.getImages().get(0).getLocation());
+            material.setCoverImage(material.getImages().get(0).getLocation600());
 
         if (!sourUser.getPreferMaterialCategory().getCategories().contains(material.getCategory())) {
             sourUser.getPreferMaterialCategory().getCategories().add(material.getCategory());

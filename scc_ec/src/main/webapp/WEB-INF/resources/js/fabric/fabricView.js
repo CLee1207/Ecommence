@@ -55,4 +55,33 @@ $(function () {
             });
         }
     });
-})
+    $('#bidList').click(function () {
+        var source = $(this);
+        var id = source.attr('data-id');
+        var $dd=$('dl.detail-main dd').eq(1);
+        if($dd.children('table').length==0) {
+            $.ajax({
+                url: '/fabric/' + id + '/orders',
+                method: 'get',
+                success: function (data) {
+                    $dd.append(data);
+                }
+            });
+        }
+    });
+
+    $('ul.pagination a').click(function(event){
+        event.preventDefault();
+        var source=$(this);
+        var url=source.attr('data-url');
+        source.parent('dd').children().remove();
+        var $dd=$('dl.detail-main dd').eq(1);
+        $.ajax({
+            url: url,
+            method: 'get',
+            success: function (data) {
+                $dd.append(data);
+            }
+        });
+    });
+});

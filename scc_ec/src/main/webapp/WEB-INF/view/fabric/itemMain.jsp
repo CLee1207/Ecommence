@@ -11,7 +11,7 @@
     <dt>
     <ul class="list-inline">
         <li>详细信息</li>
-        <li>成交记录（<bdo>90</bdo>）</li>
+        <li id="bidList" data-id="${fabric.id}">成交记录（<bdo>90</bdo>）</li>
         <li>交易评价（<bdo>90</bdo>）</li>
     </ul>
     </dt>

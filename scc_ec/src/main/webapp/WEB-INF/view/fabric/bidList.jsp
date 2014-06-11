@@ -37,4 +37,17 @@
         <li><a href="#">4</a></li>
         <li><a href="#">下一页</a></li>
     </ul>
+    <c:if test="${grid.totalPages>0}">
+            <ul class="pagination">
+                <li><a data-url="${context}/fabric/${id}/orders?page=1">首页</a></li>
+
+                <c:forEach varStatus="status" begin="${grid.currentPage-3<0?1:grid.currentPage-3}" end="${grid.currentPage+3>grid.totalPages?grid.totalPages:grid.currentPage+4}">
+                    <li <c:if test='${grid.currentPage == status.current}'>class="active"</c:if>>
+                        <a data-url="${context}/fabric/${id}/orders?page=${grid.currentPage}">${status.current}</a>
+                    </li>
+                </c:forEach>
+
+                <li><a data-url="${context}/fabric/${id}/orders?page=${grid.totalPages}">末页</a></li>
+            </ul>
+    </c:if>
 </div>

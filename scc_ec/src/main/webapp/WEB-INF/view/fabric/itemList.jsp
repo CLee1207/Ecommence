@@ -75,7 +75,7 @@
 
                 <c:forEach varStatus="status" begin="${grid.currentPage-3<0?1:grid.currentPage-3}" end="${grid.currentPage+3>grid.totalPages?grid.totalPages:grid.currentPage+4}">
                     <li <c:if test='${grid.currentPage == status.current}'>class="active"</c:if>>
-                        <a href="${context}/sellerCenter/items?type=${type}&page=${grid.currentPage}">${status.current}</a>
+                        <a data-url="${context}/sellerCenter/items?type=${type}&page=${grid.currentPage}">${status.current}</a>
                     </li>
                 </c:forEach>
 
