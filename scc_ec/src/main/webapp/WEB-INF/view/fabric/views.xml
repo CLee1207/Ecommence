@@ -36,7 +36,7 @@
         <put-attribute name="main" value="/WEB-INF/view/fabric/itemMain.jsp"></put-attribute>
         <put-list-attribute name="script">
             <add-attribute value="/resources/js/demandOrderList.js"></add-attribute>
-            <add-attribute value="/resources/js/item/itemList.js"></add-attribute>
+            <add-attribute value="/resources/js/fabric/fabricView.js"></add-attribute>
         </put-list-attribute>
     </definition>
 

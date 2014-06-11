@@ -4,12 +4,12 @@ INSERT INTO T_ec_EcUser (id, name) VALUES ('2', 'sam1');
 INSERT INTO T_ec_EcUser (id, name) VALUES ('3', 'sam2');
 
 --测试面料分类
-INSERT INTO T_ec_fabricCategory (id, name) VALUES ('1', 'category1');
-INSERT INTO T_ec_fabricCategory (id, name, parent_id) VALUES ('2', 'category1-1', 1);
-INSERT INTO T_ec_fabricCategory (id, name, parent_id) VALUES ('3', 'category1-2', 1);
-INSERT INTO T_ec_fabricCategory (id, name) VALUES ('4', 'category2');
-INSERT INTO T_ec_fabricCategory (id, name, parent_id) VALUES ('5', 'category2-1', 4);
-INSERT INTO T_ec_fabricCategory (id, name, parent_id) VALUES ('6', 'category2-2', 4);
+INSERT INTO T_ec_fabricCategory (id, name,isValid) VALUES ('1', 'category1',0);
+INSERT INTO T_ec_fabricCategory (id, name, parent_id,isValid) VALUES ('2', 'category1-1', 1,0);
+INSERT INTO T_ec_fabricCategory (id, name, parent_id,isValid) VALUES ('3', 'category1-2', 1,0);
+INSERT INTO T_ec_fabricCategory (id, name,isValid) VALUES ('4', 'category2',0);
+INSERT INTO T_ec_fabricCategory (id, name, parent_id,isValid) VALUES ('5', 'category2-1', 4,0);
+INSERT INTO T_ec_fabricCategory (id, name, parent_id,isValid) VALUES ('6', 'category2-2', 4,0);
 
 --辅料分类测试数据
 INSERT INTO T_ec_MaterialCategory (id, name) VALUES ('1', 'category1');

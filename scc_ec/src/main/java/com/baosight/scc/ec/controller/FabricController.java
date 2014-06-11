@@ -6,6 +6,7 @@ import com.baosight.scc.ec.service.*;
 import com.baosight.scc.ec.type.FabricMainUseType;
 import com.baosight.scc.ec.type.ItemState;
 import com.baosight.scc.ec.web.EcGrid;
+import com.baosight.scc.ec.web.FabricCategoryJSON;
 import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -57,7 +59,9 @@ public class FabricController extends AbstractController{
     @RequestMapping(value = "/fabric/{id}", method = RequestMethod.GET)
     public String view(@PathVariable("id") String id, Model uiModel) {
         Fabric fabric = fabricService.findById(id);
+        List<FabricCategory> categories=categoryService.findAllFirstCategory();
         uiModel.addAttribute("fabric", fabric);
+        uiModel.addAttribute("categories", categories);
         return FABRIC_VIEW;
     }
 
@@ -276,5 +280,18 @@ public class FabricController extends AbstractController{
         }else{
             return "fail";
         }
+    }
+
+    @RequestMapping(value="/fabricCategory/{id}/secondCategory",method=RequestMethod.GET,produces = "application/json")
+    @ResponseBody
+    public List<FabricCategoryJSON> findCategoryByParent(@PathVariable("id")String id){
+        FabricCategory category=new FabricCategory();
+        category.setId(id);
+        List<FabricCategory> categories= categoryService.findByParentCategoryAndIsValid(category,1);
+        List<FabricCategoryJSON> result=new ArrayList<FabricCategoryJSON>();
+        for(FabricCategory c:categories){
+            result.add(new FabricCategoryJSON(c));
+        }
+        return result;
     }
 }
