@@ -1,6 +1,7 @@
 @charset "utf-8";
 
 @import url('normalize.css');
+@import url('../plugin/datepicker/jquery-ui.custom.min.css');
 @import url('library.css');
 
 /* !!General
@@ -39,7 +40,7 @@ a:hover{
 }
 
 .icon{
-	width:16px; height:16px;
+	width:16px; height:16px; line-height:14px;
 }
 .icon-param{
 	background:url(/resources/img/icon-param.png);
@@ -65,7 +66,7 @@ a:hover{
 	vertical-align:top;
 	display:inline-block;
 	*display:inline; *zoom:1;
-	background-image:url(/resource/img/icon-star.png);
+	background-image:url(/resources/img/icon-star.png);
 	background-repeat:no-repeat;
 }
 .icon-stars-0{
@@ -195,6 +196,7 @@ header .bar{
 	background:#c05c84;
 }
 header .bar .terrace{
+	margin-right:10px;
 	padding-top:1px;
 }
 header .bar .caret{
@@ -204,6 +206,10 @@ header .bar .caret{
 header .bar span{
 	margin-right:5px;
 	float:right;
+}
+header .bar span.left{
+	margin-left:10px;
+	float:left;
 }
 header .bar .drop-menu{
 	padding:0 5px;
@@ -527,7 +533,7 @@ footer .links li:first-child:before{
 .jumbotron .carous-container a, .jumbotron .carous-thumb a{
 	padding:3px;
 	border:1px solid #ddd;
-	border-radius:3px;
+	border-radius:4px;
 	transition:border 0.36s;
 }
 .jumbotron .carous-container li, .jumbotron .carous-thumb li{
@@ -632,7 +638,7 @@ footer .links li:first-child:before{
 .jumbotron .side .app dt i{
 	margin-right:5px;
 	padding:0 2px;
-	border-radius:2px;
+	border-radius:4px;
 	background:#999;
 }
 .jumbotron .side .app dd ul{
@@ -652,7 +658,7 @@ footer .links li:first-child:before{
 }
 .jumbotron .side .app a{
 	display:block;
-	background:url(/resource/img/shadow.png) center 36px no-repeat;
+	background:url(/resources/img/shadow.png) center 36px no-repeat;
 }
 .jumbotron .side .app span{
 	padding-top:10px;
@@ -916,7 +922,8 @@ footer .links li:first-child:before{
 	line-height:200%;
 }
 .detail-info h1{
-	line-height:200%;
+	height:48px; line-height:48px;
+	font-size:24px;
 }
 .detail-info .info-item{
 	height:300px;
@@ -989,13 +996,44 @@ footer .links li:first-child:before{
 }
 
 /* !!
+ * detail - drop
+ * ** *** **** *** ** *
+ */
+.detail-table .drop, .detail-table .drop-content{
+	width:200px;
+	border:1px solid #ddd;
+}
+.detail-table .drop{
+	line-height:24px;
+	display:inline-block;
+	*display:inline; *zoom:1;
+	margin-bottom:10px;
+	border-radius:4px;
+}
+.detail-table .drop-menu{
+	padding-left:6px;
+	overflow:hidden; zoom:1;
+}
+.detail-table .drop-menu i{
+	margin:10px 6px 0 0;
+	float:right;
+}
+.detail-table .drop-content{
+	margin:0 -1px;
+	border-radius:0 0 4px 4px;
+}
+.detail-table .drop-content a{
+	padding:0 6px;
+	display:block;
+}
+.detail-table .drop-content a:hover{
+	background:#f8f8f8;
+}
+
+/* !!
  * detail - table
  * ** *** **** *** ** *
  */
-.detail-table select{
-	width:200px;
-	margin-bottom:10px;
-}
 .detail-table table{
 	text-align:center;
 }
@@ -1013,7 +1051,8 @@ footer .links li:first-child:before{
 .search-condition{
 	margin-bottom:10px;
 	padding:10px;
-	border:1px solid #0060af;
+	border:1px solid #ddd;
+	background:#fdfdfd;
 }
 .search-condition label, .search-condition ul{
 	display:inline-block;
@@ -1029,7 +1068,7 @@ footer .links li:first-child:before{
 .search-condition li{
 	padding:0 .5em;
 	background:#eee;
-	border-radius:2px;
+	border-radius:4px;
 }
 .search-condition li i{
 	line-height:10px;
@@ -1037,7 +1076,7 @@ footer .links li:first-child:before{
 	padding:0 1px;
 	cursor:pointer;
 	display:inline-block;
-	border-radius:2px;
+	border-radius:4px;
 }
 .search-condition li i:hover{
 	color:#fff;
@@ -1055,7 +1094,76 @@ footer .links li:first-child:before{
 .search-select li.active{
 	color:#fff;
 	background:#0060af;
-	border-radius:2px;
+	border-radius:4px;
+}
+.search-select .drop{
+	margin:0 -.5em;
+}
+.search-select .drop .drop-menu, .search-select .drop .drop-content{
+	padding:0 .5em;
+}
+.search-select .drop-menu{
+	z-index:0;
+	position:relative;
+	border-width:1px 1px 0 1px;
+	border-style:solid;
+	border-color:transparent;
+	background:#fff;
+}
+.search-select .drop .drop-content{
+	margin-top:-1px;
+}
+.search-select .drop:hover .drop-menu{
+	z-index:2;
+	border-color:#ddd;
+	border-radius:4px 4px 0 0;
+}
+.search-select .drop:hover .drop-content{
+	width:300px;
+	border:1px solid #ddd;
+	box-shadow:1px 1px 1px rgba(0, 0, 0, .1);
+}
+.search-select li dl{
+	overflow:hidden; zoom:1;
+}
+.search-select li dt{
+	padding:5px;
+	float:left;
+}
+.search-select li dd{
+	margin-left:60px;
+}
+.search-select li dd ul{
+	padding:5px;
+}
+.search-select li dd li{
+	margin-bottom:5px;
+}
+.search-select .color-panel{
+	padding-top:.5em;
+	overflow:hidden; zoom:1;
+}
+.search-select .color-panel bdo{
+	width:16px; height:16px;
+	margin:0 .5em .5em 0;
+	border:1px solid #eee;
+	float:left;
+}
+
+/* !!
+ * search - pack
+ * ** *** **** *** ** *
+ */
+.search-pack{
+	padding:4px 8px;
+	top:1px;
+	position:relative;
+	color:#fff;
+	border-width:1px 1px 0 1px;
+	border-style:solid;
+	border-color:#1a5c8e;
+	background:#0060af;
+	border-radius:4px 4px 0 0;
 }
 
 /* !!
@@ -1066,6 +1174,9 @@ footer .links li:first-child:before{
 	margin-bottom:10px;
 	padding:5px;
 	border:1px solid #ddd;
+}
+.search-recommend a{
+	padding:0 .5em;
 }
 
 /* !!
@@ -1093,6 +1204,11 @@ footer .links li:first-child:before{
 .search-result-panel button{
 	color:#333;
 }
+.search-result-panel button:hover{
+	color:#fff;
+	border-color:#1a5c8e;
+	background:#0060af;
+}
 .search-result-panel select{
 	padding:4px;
 }
@@ -1117,6 +1233,198 @@ footer .links li:first-child:before{
 }
 .search-result-main span{
 	margin-right:3px;
+}
+
+/* !!
+ * publish - tip
+ * ** *** **** *** ** *
+ */
+.publish-tip{
+	margin-bottom:10px;
+	font-size:14px;
+}
+.publish-tip i{
+	top:2px;
+	color:#f80;
+}
+
+/* !!
+ * publish - search
+ * ** *** **** *** ** *
+ */
+.publish-search{
+	margin:10px 0;
+}
+.publish-search input[type=text]{
+	width:300px;
+}
+
+/* !!
+ * publish - catalogue
+ * ** *** **** *** ** *
+ */
+.publish-catalogue dt ul{
+	height:24px;
+	border-bottom:1px solid #ddd;
+}
+.publish-catalogue li{
+	height:24px; line-height:24px;
+	padding:0 8px;
+	cursor:pointer;
+}
+.publish-catalogue li.active{
+	color:#0060af;
+	border-width:1px 1px 0 1px;
+	border-style:solid;
+	border-color:#ddd;
+	background:#fff;
+}
+
+/* !!
+ * publish - choose
+ * ** *** **** *** ** *
+ */
+.publish-choose .col-5{
+	margin-top:10px;
+}
+.publish-choose span{
+	margin-bottom:10px;
+	padding:5px 10px;
+	display:block;
+	text-align:center;
+	background:#fafafa;
+}
+.publish-choose select{
+	width:100%;
+	height:12em;
+}
+.publish-choose-type{
+	margin:10px 0;
+	padding:5px 10px;
+	background:#fafafa;
+}
+.publish-choose button{
+	padding:8px 16px;
+	font-size:14px;
+}
+
+/* !!
+ * publish - type
+ * ** *** **** *** ** *
+ */
+.publish-type{
+	margin-bottom:10px;
+	padding:5px 10px;
+	overflow:hidden; zoom:1;
+	background:#fafafa;
+}
+.publish-type label, .publish-type span, .publish-type a{
+	line-height:24px;
+}
+.publish-type label, .publish-type span{
+	float:left;
+}
+.publish-type button, .publish-type a{
+	float:right;
+}
+.publish-type span, .publish-type a{
+	margin-right:10px;
+}
+
+/* !!
+ * publish - has
+ * ** *** **** *** ** *
+ */
+.publish-hascat{
+	margin-bottom:10px;
+	padding:5px 10px;
+	background:#fafafa;
+}
+.publish-has ul{
+	padding:5px;
+	border:1px solid #ddd;
+}
+.publish-has dt{
+	padding:5px 10px;
+	background:#fafafa;
+}
+.publish-has .publish-choose span{
+	width:250px;
+}
+
+/* !!
+ * publish - info
+ * ** *** **** *** ** *
+ */
+.publish-info dt{
+	line-height:30px;
+	font-size:14px;
+	border-bottom:1px solid #ddd;
+}
+.publish-info dd{
+	padding:10px 0;
+}
+.publish-info ul > li{
+	margin-bottom:10px;
+}
+.publish-info ul > li > div{
+	margin:5px 0 10px 13.285em;
+	padding:10px;
+	background:#fafafa;
+}
+.publish-info ul > li > div.inline-block{
+	margin-left:0;
+}
+.publish-info ol > li{
+	margin:0 1em 1em 0;
+}
+.publish-info ol > li > bdo{
+	width:13px; height:13px;
+	top:2px;
+	position:relative;
+	display:inline-block;
+	*display:inline; *zoom:1;
+}
+.publish-info label{
+	width:12em;
+	line-height:24px;
+	margin-right:1em;
+	text-align:right;
+	vertical-align:top;
+	display:inline-block;
+}
+.publish-info label i{
+	margin-right:3px;
+}
+.publish-info input[type=text]{
+	width:200px;
+}
+.publish-info p{
+	line-height:24px;
+	display:inline;
+	color:#f85e00;
+}
+.publish-info p.gray{
+	color:#888;
+}
+.publish-info img{
+	width:172px; height:172px; line-height:160px;
+	text-align:center;
+	vertical-align:middle;
+	display:block;
+	font-size:28px;
+	color:#aaa;
+	background:#f8f8f8;
+}
+.publish-info-submit{
+	padding:20px 0;
+	text-align:center;
+}
+.publish-info-submit button, .publish-info-submit a{
+	margin:0 5px;
+}
+.publish-info-submit button{
+	width:160px;
 }
 
 /* !!
