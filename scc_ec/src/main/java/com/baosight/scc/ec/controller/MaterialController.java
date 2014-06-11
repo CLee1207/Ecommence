@@ -3,9 +3,7 @@ package com.baosight.scc.ec.controller;
 
 import com.baosight.scc.ec.model.*;
 import com.baosight.scc.ec.security.UserContext;
-import com.baosight.scc.ec.service.FavouriteItemsService;
-import com.baosight.scc.ec.service.MaterialCategoryService;
-import com.baosight.scc.ec.service.MaterialService;
+import com.baosight.scc.ec.service.*;
 import com.baosight.scc.ec.type.CommentType;
 import com.baosight.scc.ec.type.ItemState;
 import com.baosight.scc.ec.type.MaterialState;
@@ -45,13 +43,17 @@ public class MaterialController extends AbstractController {
 
     @Autowired
     private FavouriteItemsService favouriteItemsService;
+    @Autowired
+    private  MaterialCategoryService materialCategoryService;
+    @Autowired
+    private FabricCategoryService fabricCategoryService;
+    @Autowired
+    private EcUserService ecUserService;
 
     final Logger logger = LoggerFactory.getLogger(MaterialController.class);
 
 
-    private final static String MARTERIAL_DETAIL = "materialDetail"; //辅料详情页面
-    private final static String ERROR_404 = "404"; //404页面
-    private final static String ERROR_500 = "500"; //500页面
+    private final static String MATERIAL_DETAIL = "materialDetail"; //辅料详情页面
     private final static String MATERIAL_COMMENTS = "materialCommentList"; //辅料交易评价记录页面
     private final static String MATERIAL_ORDERS = "materialOrderList"; //辅料交易记录页面
     private final static String MATERIAL_LIST = "material_list"; //辅料交易记录页面
@@ -64,26 +66,32 @@ public class MaterialController extends AbstractController {
     //面料详情页面
     @RequestMapping(value = "/material/{id}", method = RequestMethod.GET)
     public String getMaterial(Model uiModel, @PathVariable("id") String id) {
-        String str = ERROR_404;
-
         Material mt = null;
+        //辅料信息
         mt = this.materialService.getMaterialInfo(id);
+        //供应商信息
+        EcUser user = this.ecUserService.findById(mt.getCreatedBy().getId());
+        //辅料一级分类
+        List<MaterialCategory> materialCategories = this.materialCategoryService.findAllFirstCategory();
+        //面料一级分类
+        List<FabricCategory> fabricCategories = this.fabricCategoryService.findAllFirstCategory();
         if (mt == null) {
             mt = new Material();
         }
         uiModel.addAttribute("mt", mt);
-        str = MARTERIAL_DETAIL;
-        return str;
+        uiModel.addAttribute("user",user);
+        uiModel.addAttribute("materialCategories",materialCategories);
+        uiModel.addAttribute("fabricCategories",fabricCategories);
+        return MATERIAL_DETAIL;
     }
 
     //面料交易评价列表
     @RequestMapping(value = "/material/{id}/comments", method = RequestMethod.GET)
-    public String showMarteriaComments(Model uiModel,
+    public String showMaterialComments(Model uiModel,
                                        @RequestParam(value = "page", required = false,defaultValue="1") Integer page,
                                        @RequestParam(value = "size", required = false,defaultValue = "15") Integer size,
                                        @PathVariable("id") String id,
                                        @RequestParam(value = "type", required = false) Integer type) {
-        String str = ERROR_404;
         try {
             if (null != id) {
                 //根据辅料id查询辅料信息
@@ -107,12 +115,11 @@ public class MaterialController extends AbstractController {
                 cgrid.setTotalPages(commentPage.getTotalPages());
                 cgrid.setTotalRecords(commentPage.getTotalElements());
                 uiModel.addAttribute("materialComments", cgrid);
-                str = MATERIAL_COMMENTS;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return str;
+        return MATERIAL_COMMENTS;
     }
 
     /*
@@ -272,7 +279,7 @@ public void tempUpdateMaterial(Material material){
         if(currentUser!=null) {
             Material material = new Material();
             material.setId(id);
-            favouriteItemsService.addFavourite(currentUser,material);
+            favouriteItemsService.addFavourite(currentUser, material);
             return "success";
         }else{
             return "fail";
