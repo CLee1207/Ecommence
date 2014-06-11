@@ -7,6 +7,7 @@ import com.baosight.scc.ec.web.ItemJSON;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import javax.persistence.Query;
 import java.util.List;
 
 /**
@@ -48,4 +49,11 @@ public interface ItemService {
 
     public Item updateState(Item item);
 
+    /**
+     *统计 该产品下，交易状态个数
+     * @param pid 产品id
+     * @param status 订单状态
+     * @return
+     */
+    public Integer findOrderStatusCountByMid(String pid,String status);
 }
