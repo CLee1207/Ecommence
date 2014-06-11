@@ -16,15 +16,15 @@
         <ul>
             <li>
                 <label>公司名称：</label>
-                <span>${fabric.createdBy.}</span>
+                <span>${fabric.createdBy.companyName}</span>
             </li>
             <li>
                 <label>公司地址：</label>
-                <span>浙江莫干山经济开发区</span>
+                <span>${fabric.createdBy.companyAddress}</span>
             </li>
             <li>
                 <label>官方网站：</label>
-                <span><a href="#">www.baidu.com</a></span>
+                <span><a href="${fabric.createdBy.url}">${fabric.createdBy.url}</a></span>
             </li>
             <li>
                 <label>综合评分：</label>

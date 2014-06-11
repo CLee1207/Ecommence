@@ -3,8 +3,6 @@ package com.baosight.scc.ec.service;
 import com.baosight.scc.ec.model.Comment;
 import com.baosight.scc.ec.model.EcUser;
 import com.baosight.scc.ec.model.Fabric;
-import com.baosight.scc.ec.model.OrderLine;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -21,16 +19,6 @@ public interface FabricService {
     Fabric save(Fabric fabric);
 
     Fabric update(Fabric fabric);
-
-    /**
-     * 根据面料id，查询面料交易记录
-     *
-     * @param id       面料id
-     * @param pageable
-     * @return
-     * @author sam
-     */
-    Page<OrderLine> showFabricOrdersByFid(String id, Pageable pageable);
 
     /**
      * 根据面料id，，查询面料交易评价记录

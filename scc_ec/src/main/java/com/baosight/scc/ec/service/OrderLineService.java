@@ -30,4 +30,6 @@ public interface OrderLineService {
     List<OrderLine> findTest();
 
     boolean countByStateFinishAndItem(Item item);
+
+    public Page<OrderLine> showFabricOrdersByFid(String id, Pageable pageable);
 }

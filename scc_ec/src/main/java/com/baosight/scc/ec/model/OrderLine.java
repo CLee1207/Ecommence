@@ -11,7 +11,8 @@ import javax.persistence.*;
 @Table(name="T_ec_OrderLine")
 //订单明细
 @NamedQueries({@NamedQuery(name="OrderLine.findTest",query="select a,count(a.item) from OrderLine a left join a.item b "),
-@NamedQuery(name = "OrderLine.countByStateAndItem",query="select count(o) from OrderLine o where o.item=:item and o.item.state<>'FINISH'")})
+@NamedQuery(name = "OrderLine.countByStateAndItem",query="select count(o) from OrderLine o where o.item=:item and o.item.state<>'FINISH'"),
+@NamedQuery(name="OrderLine.findByItem",query="select o from OrderLine o join o.orderItem oi join o.orderItem.buyer b where o.item=:item")})
 public class OrderLine {
     @Id
     private String id;

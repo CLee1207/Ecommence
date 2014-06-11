@@ -17,6 +17,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by zodiake on 2014/5/12.
@@ -84,7 +85,7 @@ public class FabricServiceImpl implements FabricService {
         EcUser sourUser = em.find(EcUser.class, user.getId());
 
         if (fabric.getImages().size() != 0)
-            fabric.setCoverImage(fabric.getImages().get(0).getLocation());
+            fabric.setCoverImage(fabric.getImages().get(0).getLocation600());
 
         if (!sourUser.getPreferFabricCategory().getCategories().contains(fabric.getCategory())) {
             sourUser.getPreferFabricCategory().getCategories().add(fabric.getCategory());
@@ -101,7 +102,7 @@ public class FabricServiceImpl implements FabricService {
         EcUser user = fabric.getCreatedBy();
         EcUser sourUser = em.find(EcUser.class, user.getId());
         if (fabric.getImages().size() != 0)
-            fabric.setCoverImage(fabric.getImages().get(0).getLocation());
+            fabric.setCoverImage(fabric.getImages().get(0).getLocation600());
         if (!sourUser.getPreferFabricCategory().getCategories().contains(fabric.getCategory())) {
             sourUser.getPreferFabricCategory().getCategories().add(fabric.getCategory());
         }
@@ -110,11 +111,6 @@ public class FabricServiceImpl implements FabricService {
         return fr.save(fabric);
     }
 
-    @Transactional(readOnly = true)
-    public Page<OrderLine> showFabricOrdersByFid(String id, Pageable pageable) {
-        Fabric fabric = this.fr.findOne(id);
-        return this.or.findByItem(fabric, pageable);
-    }
 
     @Transactional(readOnly = true)
     public Page<Comment> showFabricCommentsByFid(String id, Integer flag, Pageable pageable) {

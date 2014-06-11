@@ -58,7 +58,6 @@ public class EcUser extends User implements Serializable {
     @OneToMany(mappedBy = "createdBy")
     private List<Information> informations = new ArrayList<Information>();
 
-
     @Embedded
     private PreferFabricCategory preferFabricCategory = new PreferFabricCategory();
 
@@ -101,6 +100,8 @@ public class EcUser extends User implements Serializable {
     private String companyName;
 
     private String companyAddress;
+
+    private String url;//公司主页
 
     @OneToOne
     private CompositeScore compositeScore;
@@ -344,6 +345,14 @@ public class EcUser extends User implements Serializable {
 
     public void setCompanyAddress(String companyAddress) {
         this.companyAddress = companyAddress;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public CompositeScore getCompositeScore() {

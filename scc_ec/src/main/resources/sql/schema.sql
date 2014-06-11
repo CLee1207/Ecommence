@@ -6,7 +6,8 @@ CREATE TABLE T_ec_EcUser (
   password          VARCHAR(20),
   createdTime       TIMESTAMP,
   companyName       VARCHAR(20),
-  companyAddress    VARCHAR(20)
+  companyAddress    VARCHAR(20),
+  url varchar(30)
 );
 
 CREATE TABLE T_ec_address (
@@ -171,11 +172,13 @@ CREATE TABLE T_ec_material_range (
 
 CREATE TABLE T_ec_CultureImage (
   item_id     CHAR(36),
-  location    VARCHAR(50),
+  location300    VARCHAR(50),
+  location600    VARCHAR(50),
+  location1000    VARCHAR(50),
   orderNum    INT DEFAULT 0,
   createdTime TIMESTAMP,
   updatedTime TIMESTAMP,
-  PRIMARY KEY (item_id, location, orderNum, createdTime, updatedTime),
+  PRIMARY KEY (item_id, location300,orderNum),
   FOREIGN KEY (item_id) REFERENCES T_ec_item (id)
 );
 

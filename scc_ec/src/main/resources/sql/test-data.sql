@@ -1,15 +1,15 @@
 --测试用户
-INSERT INTO t_ec_EcUser (id, name) VALUES ('1', 'tom');
+INSERT INTO t_ec_EcUser (id, name, companyName, companyAddress) VALUES ('1', 'tom', '烧死异性恋', '宛平南路600号');
 INSERT INTO T_ec_EcUser (id, name) VALUES ('2', 'sam1');
 INSERT INTO T_ec_EcUser (id, name) VALUES ('3', 'sam2');
 
 --测试面料分类
-INSERT INTO T_ec_fabricCategory (id, name,isValid) VALUES ('1', 'category1',0);
-INSERT INTO T_ec_fabricCategory (id, name, parent_id,isValid) VALUES ('2', 'category1-1', 1,0);
-INSERT INTO T_ec_fabricCategory (id, name, parent_id,isValid) VALUES ('3', 'category1-2', 1,0);
-INSERT INTO T_ec_fabricCategory (id, name,isValid) VALUES ('4', 'category2',0);
-INSERT INTO T_ec_fabricCategory (id, name, parent_id,isValid) VALUES ('5', 'category2-1', 4,0);
-INSERT INTO T_ec_fabricCategory (id, name, parent_id,isValid) VALUES ('6', 'category2-2', 4,0);
+INSERT INTO T_ec_fabricCategory (id, name, isValid) VALUES ('1', 'category1', 0);
+INSERT INTO T_ec_fabricCategory (id, name, parent_id, isValid) VALUES ('2', 'category1-1', 1, 0);
+INSERT INTO T_ec_fabricCategory (id, name, parent_id, isValid) VALUES ('3', 'category1-2', 1, 0);
+INSERT INTO T_ec_fabricCategory (id, name, isValid) VALUES ('4', 'category2', 0);
+INSERT INTO T_ec_fabricCategory (id, name, parent_id, isValid) VALUES ('5', 'category2-1', 4, 0);
+INSERT INTO T_ec_fabricCategory (id, name, parent_id, isValid) VALUES ('6', 'category2-2', 4, 0);
 
 --辅料分类测试数据
 INSERT INTO T_ec_MaterialCategory (id, name) VALUES ('1', 'category1');
@@ -20,18 +20,18 @@ INSERT INTO T_ec_MaterialCategory (id, name, parent_id) VALUES ('5', 'category2-
 INSERT INTO T_ec_MaterialCategory (id, name, parent_id) VALUES ('6', 'category2-2', '4');
 
 --测试item
-INSERT INTO T_ec_Item (id, customId, name, createdBy, createdTime,state)
-VALUES ('1', '123', '测试面料', '1', '2013-1-1 14:12:15','草稿');
-INSERT INTO T_ec_Item (id, customId, name, createdBy, createdTime,state)
-VALUES ('2', '234', '测试辅料1', '1', '2013-1-1 14:13:15','出售中');
-INSERT INTO T_ec_Item (id, customId, name, createdBy, createdTime,state)
-VALUES ('3', '345', '测试辅料2', '1', '2013-1-1 14:14:15','下架');
-INSERT INTO T_ec_item (id, name, customId, createdBy, createdTime,state)
-VALUES ('4', 'item4', '789', '2', '2013-1-1 14:15:15','草稿');
-INSERT INTO T_ec_item (id, name, customId, createdBy, createdTime,state)
-VALUES ('5', 'item5', '901', '2', '2013-1-1 14:16:15','出售中');
-INSERT INTO T_ec_item (id, name, customId, createdBy, createdTime,state)
-VALUES ('6', 'item6', '134', '2', '2013-1-1 14:17:15','下架');
+INSERT INTO T_ec_Item (id, customId, name, createdBy, createdTime, state)
+VALUES ('1', '123', '测试面料', '1', '2013-1-1 14:12:15', '草稿');
+INSERT INTO T_ec_Item (id, customId, name, createdBy, createdTime, state)
+VALUES ('2', '234', '测试辅料1', '1', '2013-1-1 14:13:15', '出售中');
+INSERT INTO T_ec_Item (id, customId, name, createdBy, createdTime, state)
+VALUES ('3', '345', '测试辅料2', '1', '2013-1-1 14:14:15', '下架');
+INSERT INTO T_ec_item (id, name, customId, createdBy, createdTime, state)
+VALUES ('4', 'item4', '789', '2', '2013-1-1 14:15:15', '草稿');
+INSERT INTO T_ec_item (id, name, customId, createdBy, createdTime, state)
+VALUES ('5', 'item5', '901', '2', '2013-1-1 14:16:15', '出售中');
+INSERT INTO T_ec_item (id, name, customId, createdBy, createdTime, state)
+VALUES ('6', 'item6', '134', '2', '2013-1-1 14:17:15', '下架');
 
 --测试面料成分
 INSERT INTO T_ec_FabricSource (id, name) VALUES ('1', 'sourceparent1');
@@ -53,6 +53,16 @@ INSERT INTO T_ec_Fabric (id, category_id) VALUES ('5', '4');
 INSERT INTO T_ec_Material (id, category_id) VALUES ('2', '2');
 INSERT INTO T_ec_Material (id, category_id) VALUES ('3', '2');
 INSERT INTO T_ec_Material (id, category_id) VALUES ('6', '2');
+
+--测试面料图片位置
+INSERT INTO T_ec_CultureImage (item_id, location300, location600, location1000, orderNum)
+VALUES ('1', '/resources/pic/logo.jpg', '/resources/pic/avatar.jpg', '', 1);
+INSERT INTO T_ec_CultureImage (item_id, location300, location600, location1000, orderNum)
+VALUES ('1', '/resources/pic/logo.jpg', '/resources/pic/avatar.jpg', '', 2);
+INSERT INTO T_ec_CultureImage (item_id, location300, location600, location1000, orderNum)
+VALUES ('1', '/resources/pic/logo.jpg', '/resources/pic/avatar.jpg', '', 3);
+INSERT INTO T_ec_CultureImage (item_id, location300, location600, location1000, orderNum)
+VALUES ('1', '/resources/pic/logo.jpg', '/resources/pic/avatar.jpg', '', 4);
 
 --测试面料价格
 INSERT INTO T_ec_fabric_range (fabric_id, unit_from, price) VALUES ('1', 5, 20);
@@ -112,7 +122,8 @@ UPDATE T_ec_EcUser
 SET defaultAddress_id = '1'
 WHERE id = '1';
 --求购单测试
-INSERT INTO t_ec_demandorder (id, address_id, demandType, user_id, title,createdTime,validDateTo) VALUES ('1', '1', '服务', '1', 'demandOrder','2014-6-12 12:00:12','2014-6-30 12:00:12');
+INSERT INTO t_ec_demandorder (id, address_id, demandType, user_id, title, createdTime, validDateTo)
+VALUES ('1', '1', '服务', '1', 'demandOrder', '2014-6-12 12:00:12', '2014-6-30 12:00:12');
 
 --测试调样单
 INSERT INTO T_ec_SampleOrder (id, user_id, item_id, state, address_id) VALUES ('1', '1', '1', '已发货', '1');
