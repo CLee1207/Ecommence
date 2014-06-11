@@ -1,0 +1,10 @@
+window.include(
+	'/resources/',
+	[
+		'js/jquery.min',
+		'js/jquery.mousewheel.min',
+		'plugin/fancybox/jquery.fancybox.pack',
+		'js/library',
+		'js/action'
+	]
+);
