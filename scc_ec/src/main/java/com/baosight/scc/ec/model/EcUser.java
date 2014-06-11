@@ -104,6 +104,7 @@ public class EcUser extends User implements Serializable {
     private String url;//公司主页
 
     @OneToOne
+    @Transient
     private CompositeScore compositeScore;
 
     public String getType() {
