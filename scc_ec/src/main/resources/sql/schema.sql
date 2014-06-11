@@ -4,7 +4,9 @@ CREATE TABLE T_ec_EcUser (
   defaultAddress_id CHAR(36),
   name              VARCHAR(10),
   password          VARCHAR(20),
-  createdTime       TIMESTAMP
+  createdTime       TIMESTAMP,
+  companyName       VARCHAR(20),
+  companyAddress    VARCHAR(20)
 );
 
 CREATE TABLE T_ec_address (
@@ -67,7 +69,7 @@ CREATE TABLE T_ec_Item (
   type          CHAR(1),
   createdBy     CHAR(36),
   price         DOUBLE,
-  state                  VARCHAR(5),
+  state         VARCHAR(5),
   FOREIGN KEY (createdBy) REFERENCES T_ec_EcUser (id)
 );
 
@@ -108,7 +110,7 @@ CREATE TABLE T_ec_FabricSource (
   updatedBy   CHAR(36),
   createdTime TIMESTAMP,
   updatedTime TIMESTAMP,
-  isValid int default 0,
+  isValid     INT DEFAULT 0,
   FOREIGN KEY (parent_id) REFERENCES T_ec_FabricSource (id),
   FOREIGN KEY (createdBy) REFERENCES T_ec_EcUser (id),
   FOREIGN KEY (updatedBy) REFERENCES T_ec_EcUser (id)
@@ -255,7 +257,7 @@ CREATE TABLE T_ec_OrderItem (
   deliverTime     TIMESTAMP,
   receiveTime     TIMESTAMP,
   orderAddress_id CHAR(36),
-  status         VARCHAR(20),
+  status          VARCHAR(20),
   FOREIGN KEY (orderAddress_id) REFERENCES T_EC_OrderAddress (id)
 );
 

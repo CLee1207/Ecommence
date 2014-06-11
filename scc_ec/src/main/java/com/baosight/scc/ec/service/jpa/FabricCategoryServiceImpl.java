@@ -5,19 +5,16 @@ import com.baosight.scc.ec.model.FabricCategory;
 import com.baosight.scc.ec.repository.FabricCategoryRepository;
 import com.baosight.scc.ec.security.UserContext;
 import com.baosight.scc.ec.service.FabricCategoryService;
-
 import com.baosight.scc.ec.utils.GuidUtil;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
 import java.util.List;
 import java.util.Locale;
 
@@ -107,5 +104,10 @@ public class FabricCategoryServiceImpl implements FabricCategoryService{
     @Transactional(readOnly = true)
     public List<FabricCategory> findSecondCategoryByIsValid(int isValid) {
         return repository.findByIsValidAndParentCategoryIsNotNull(isValid);
+    }
+
+    @Override
+    public List<FabricCategory> findByParentCategoryAndIsValid(FabricCategory category, int isValid) {
+        return repository.findByParentCategoryAndIsValid(category,0);
     }
 }

@@ -51,7 +51,9 @@ public class FabricServiceImpl implements FabricService {
 
     @Transactional(readOnly = true)
     public Fabric findById(String id) {
-        return fr.findOne(id);
+        Fabric fabric=fr.findOne(id);
+        fabric.getCreatedBy();
+        return fabric;
     }
 
     /*

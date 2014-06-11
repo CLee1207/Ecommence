@@ -50,4 +50,9 @@ public interface FabricCategoryRepository extends PagingAndSortingRepository<Fab
      * @return
      */
     List<FabricCategory> findByIsValidAndParentCategoryIsNotNull(int isValid);
+
+    /*
+        find children category by id
+     */
+    List<FabricCategory> findByParentCategoryAndIsValid(FabricCategory category,int valid);
 }
