@@ -139,4 +139,14 @@ public class ItemServiceImpl implements ItemService{
         source.setState(item.getState());
         return source;
     }
+
+    @Override
+    public Integer findOrderStatusCountByMid(String pid, String status) {
+        String sql = "select count(a.item_id) from T_ec_Item i inner join T_ec_OrderLine a on i.id=a.item_id " +
+                "inner join T_ec_OrderItem o on o.id=a.orderItem_id " +
+                "where o.status = '"+status+"' and i.id = '" + pid + "' and o.createdTime <= current_timestamp - 30 ";
+        Query query = em.createNativeQuery(sql);
+        Integer count = (Integer)query.getSingleResult();
+        return count;
+    }
 }
