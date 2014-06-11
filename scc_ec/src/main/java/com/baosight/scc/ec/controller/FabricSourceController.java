@@ -172,6 +172,23 @@ public class FabricSourceController extends AbstractController{
     }
 
     /**
+     * 从一级分类页面进入，创建form让用户编辑
+     */
+    @RequestMapping(value = "/secondSource/add/{id}", method = RequestMethod.GET)
+    public String addSecondCategoryForm(@PathVariable("id") String id,Model uiModel) {
+        FabricSource secondCategory = new FabricSource();
+        FabricSource parentCategory = new FabricSource();
+        parentCategory.setId(id);
+        secondCategory.setParent(parentCategory);
+        List<FabricSource> firstCategoryList = fabricSourceService.findFirstCategoryByIsValid(0);
+        List<FabricSource> secondCategoryList = fabricSourceService.findByParent(parentCategory);
+        uiModel.addAttribute("secondCategory",secondCategory);
+        uiModel.addAttribute("firstCategoryList",firstCategoryList);
+        uiModel.addAttribute("secondCategoryList",secondCategoryList);
+        return SECOND_EDIT;
+    }
+
+    /**
      * 提交广告信息表单,根据提交信息中的id是否有值来进行insert和update操作
      * @param uiModel
      * @param secondCategory

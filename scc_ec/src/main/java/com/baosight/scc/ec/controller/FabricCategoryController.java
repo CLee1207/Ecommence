@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -164,7 +165,24 @@ public class FabricCategoryController extends AbstractController{
     public String editSecondCategoryForm(@PathVariable("id") String id,Model uiModel) {
         FabricCategory secondCategory = fabricCategoryService.findById(id);
         List<FabricCategory> firstCategoryList = fabricCategoryService.findFirstCategoryByIsValid(0);
-        List<FabricCategory> secondCategoryList = fabricCategoryService.findAllSecondCategory();
+        List<FabricCategory> secondCategoryList = secondCategoryList = fabricCategoryService.findAllSecondCategory();
+        uiModel.addAttribute("secondCategory",secondCategory);
+        uiModel.addAttribute("firstCategoryList",firstCategoryList);
+        uiModel.addAttribute("secondCategoryList",secondCategoryList);
+        return SECOND_EDIT;
+    }
+
+    /**
+     * 从一级分类页面进入，创建form让用户编辑
+     */
+    @RequestMapping(value = "/secondCategory/add/{id}", method = RequestMethod.GET)
+    public String addSecondCategoryForm(@PathVariable("id") String id,Model uiModel) {
+        FabricCategory secondCategory = new FabricCategory();
+        FabricCategory parentCategory = new FabricCategory();
+        parentCategory.setId(id);
+        secondCategory.setParentCategory(parentCategory);
+        List<FabricCategory> firstCategoryList = fabricCategoryService.findFirstCategoryByIsValid(0);
+        List<FabricCategory> secondCategoryList = fabricCategoryService.findByParentCategory(parentCategory);
         uiModel.addAttribute("secondCategory",secondCategory);
         uiModel.addAttribute("firstCategoryList",firstCategoryList);
         uiModel.addAttribute("secondCategoryList",secondCategoryList);

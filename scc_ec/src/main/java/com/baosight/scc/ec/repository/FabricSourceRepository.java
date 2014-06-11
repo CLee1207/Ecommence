@@ -50,4 +50,19 @@ public interface FabricSourceRepository extends CrudRepository<FabricSource,Stri
      * @return
      */
     List<FabricSource> findByIsValidAndParentIsNotNull(int isValid);
+
+    /**
+     * 根据一级分类查询二级分类 Charles 2014/6/11
+     * @param fabricSource
+     * @return
+     */
+    List<FabricSource> findByParent(FabricSource fabricSource);
+
+    /**
+     * 根据一级分类查询有效的二级分类 Charles 2014/6/11
+     * @param fabricSource
+     * @param isValid
+     * @return
+     */
+    List<FabricSource> findByParentAndIsValid(FabricSource fabricSource,int isValid);
 }

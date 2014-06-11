@@ -77,4 +77,19 @@ public interface MaterialCategoryService {
      * @return
      */
     List<MaterialCategory> findSecondCategoryByIsValid(int isValid);
+
+    /**
+     * 根据一级分类查询二级分类 Charles 2014/6/11
+     * @param materialCategory
+     * @return
+     */
+    List<MaterialCategory> findSecondCategoryByParentCategory(MaterialCategory materialCategory);
+
+    /**
+     * 根据一级分类查询有效的二级分类 Charles 2014/6/11
+     * @param materialCategory
+     * @param isValid
+     * @return
+     */
+    List<MaterialCategory> findSecondCategoryByParentCategoryAndIsValid(MaterialCategory materialCategory,int isValid);
 }

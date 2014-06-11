@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+    <!-- Default Main Template -->
+    <definition name="buyer_mainTemplate" template="/WEB-INF/view/template/buyerCenterMain.jsp">
+    </definition>
+    <definition name="seller_mainTemplate" template="/WEB-INF/view/template/sellerCenterMain.jsp">
+    </definition>
+
+    <!-- ***************************************************用户信息维护*************************************************** -->
+    <!--买家信息维护-->
+    <definition name="buyer_profile" extends="buyer_mainTemplate">
+        <put-attribute name="main" value="/WEB-INF/view/user/buyerProfile.jsp"></put-attribute>
+        <put-list-attribute name="script">
+        </put-list-attribute>
+    </definition>
+
+    <!--卖家信息维护-->
+    <definition name="seller_profile" extends="seller_mainTemplate">
+        <put-attribute name="main" value="/WEB-INF/view/user/sellerProfile.jsp"></put-attribute>
+        <put-list-attribute name="script">
+        </put-list-attribute>
+    </definition>
+</tiles-definitions>

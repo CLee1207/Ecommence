@@ -67,4 +67,11 @@ public interface FabricCategoryService {
     List<FabricCategory> findSecondCategoryByIsValid(int isValid);
 
     List<FabricCategory> findByParentCategoryAndIsValid(FabricCategory category,int isValid);
+
+    /**
+     * 根据一级分类查询二级分类，包含有效和无效的分类 Charles 2014/6/11
+     * @param category
+     * @return
+     */
+    List<FabricCategory> findByParentCategory(FabricCategory category);
 }

@@ -29,7 +29,7 @@
         <c:forEach var="firstCategory" items="${grid.ecList}" varStatus="list">
             <tr class="tr-${firstCategory.id}">
                 <td>${list.index+1}</td>
-                <td>${firstCategory.name}</td>
+                <td><a href="/systemConfig/secondSource/add/${firstCategory.id}">${firstCategory.name}</a></td>
                 <td>${firstCategory.createdBy.name}</td>
                 <td><fmt:formatDate value="${firstCategory.createdTime.time}" pattern="yyyy-MM-dd HH:mm" type="date"/></td>
                 <td>${firstCategory.updatedBy.name}</td>
