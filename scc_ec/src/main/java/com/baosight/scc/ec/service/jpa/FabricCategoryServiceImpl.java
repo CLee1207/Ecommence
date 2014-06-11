@@ -110,4 +110,9 @@ public class FabricCategoryServiceImpl implements FabricCategoryService{
     public List<FabricCategory> findByParentCategoryAndIsValid(FabricCategory category, int isValid) {
         return repository.findByParentCategoryAndIsValid(category,0);
     }
+
+    @Override
+    public List<FabricCategory> findByParentCategory(FabricCategory category) {
+        return repository.findByParentCategory(category);
+    }
 }

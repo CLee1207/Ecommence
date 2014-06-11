@@ -105,4 +105,14 @@ public class FabricSourceServiceImpl implements FabricSourceService {
     public List<FabricSource> findSecondCategoryByIsValid(int isValid) {
         return repository.findByIsValidAndParentIsNotNull(isValid);
     }
+
+    @Override
+    public List<FabricSource> findByParent(FabricSource fabricSource) {
+        return repository.findByParent(fabricSource);
+    }
+
+    @Override
+    public List<FabricSource> findByParentAndIsValid(FabricSource fabricSource, int isValid) {
+        return repository.findByParentAndIsValid(fabricSource, isValid);
+    }
 }

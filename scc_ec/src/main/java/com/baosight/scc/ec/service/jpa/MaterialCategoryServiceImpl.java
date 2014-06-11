@@ -145,4 +145,14 @@ public class MaterialCategoryServiceImpl implements MaterialCategoryService {
     public List<MaterialCategory> findSecondCategoryByIsValid(int isValid) {
         return mr.findByIsValidAndParentCategoryIsNotNull(isValid);
     }
+
+    @Override
+    public List<MaterialCategory> findSecondCategoryByParentCategory(MaterialCategory materialCategory) {
+        return mr.findByParentCategory(materialCategory);
+    }
+
+    @Override
+    public List<MaterialCategory> findSecondCategoryByParentCategoryAndIsValid(MaterialCategory materialCategory, int isValid) {
+        return mr.findByParentCategoryAndIsValid(materialCategory, isValid);
+    }
 }

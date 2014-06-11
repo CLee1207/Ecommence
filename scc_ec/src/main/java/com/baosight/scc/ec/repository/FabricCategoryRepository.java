@@ -55,4 +55,9 @@ public interface FabricCategoryRepository extends PagingAndSortingRepository<Fab
         find children category by id
      */
     List<FabricCategory> findByParentCategoryAndIsValid(FabricCategory category,int valid);
+
+    /*
+       根据一级分类查询二级分类，包含有效和无效的分类 Charles 2014/6/11
+     */
+    List<FabricCategory> findByParentCategory(FabricCategory category);
 }

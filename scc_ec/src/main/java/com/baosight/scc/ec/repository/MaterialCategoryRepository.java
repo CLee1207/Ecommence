@@ -1,5 +1,6 @@
 package com.baosight.scc.ec.repository;
 
+import com.baosight.scc.ec.model.Material;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -17,7 +18,7 @@ public interface MaterialCategoryRepository extends PagingAndSortingRepository <
 	//根据id，查询辅料分类信息
 //	MaterialCategory findOne(String id);
 
-    List<MaterialCategory> findByParentCategory(MaterialCategory category);
+    List<MaterialCategory> findByParentCategory(MaterialCategory materialCategory);
 	/*
 	//查询辅料一级分类列表
 	List<MaterialCategory> findAll();*/
@@ -61,4 +62,12 @@ public interface MaterialCategoryRepository extends PagingAndSortingRepository <
      * @return
      */
     List<MaterialCategory> findByIsValidAndParentCategoryIsNotNull(int isValid);
+
+    /**
+     * 查询有效的二级分类 Charles 2014/6/9
+     * @param isValid
+     * @return
+     */
+    List<MaterialCategory> findByParentCategoryAndIsValid(MaterialCategory materialCategory,int isValid);
+
 }

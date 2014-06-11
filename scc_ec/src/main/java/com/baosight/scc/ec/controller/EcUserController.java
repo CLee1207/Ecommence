@@ -16,8 +16,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Locale;
 
@@ -46,7 +49,8 @@ public class EcUserController extends AbstractController {
 
     private final static String FAVOURITE_LIST = "favouriteList";//收藏的商品
     private final static String FAVOURITE_SHOP_LIST = "favouriteShopList";//收藏的店铺
-
+    private final static String BUYER_PROFILE = "buyer_profile";//买家信息维护
+    private final static String SELLER_PROFILE = "seller_profile";//卖家信息维护
     /*
         list all favourite items
      */
@@ -159,4 +163,53 @@ public class EcUserController extends AbstractController {
         return itemService.findTop4ByCreatedByOrderByBidCount(u);
     }
 
+    /**
+     * 买家信息维护
+    */
+    @RequestMapping(value="/profile",method = RequestMethod.GET)
+    public String modifyUserInfo(Model uiModel){
+        EcUser currentUser=userContext.getCurrentUser();
+        uiModel.addAttribute("user",currentUser);
+        return BUYER_PROFILE;
+    }
+
+    @RequestMapping(value="/profile",params = "form",method = RequestMethod.POST)
+    public String saveUserInfo(Model uiModel,@Valid @ModelAttribute("user")EcUser user,BindingResult result,Locale locale,HttpServletRequest request){
+        if(result.hasErrors()){
+            uiModel.addAttribute("message", new Message("error", messageSource.getMessage("profile.required", new Object[]{}, locale)));
+            uiModel.addAttribute("user", user);
+            return BUYER_PROFILE;
+        }
+        else {
+            EcUser u = userContext.getCurrentUser();
+            u.setName("");
+            userService.save(u);
+            return BUYER_PROFILE;
+        }
+    }
+
+    /**
+     * 卖家信息维护
+     */
+    @RequestMapping(value="/company",method = RequestMethod.GET)
+    public String modifyComInfo(Model uiModel){
+        EcUser currentUser=userContext.getCurrentUser();
+        uiModel.addAttribute("user",currentUser);
+        return SELLER_PROFILE;
+    }
+
+    @RequestMapping(value="/company",params = "form",method = RequestMethod.POST)
+    public String saveComInfo(Model uiModel,@Valid @ModelAttribute("user")EcUser user,BindingResult result,Locale locale,HttpServletRequest request){
+        if(result.hasErrors()){
+            uiModel.addAttribute("message", new Message("error", messageSource.getMessage("profile.required", new Object[]{}, locale)));
+            uiModel.addAttribute("user", user);
+            return SELLER_PROFILE;
+        }
+        else {
+            EcUser u = userContext.getCurrentUser();
+            u.setName("");
+            userService.save(u);
+            return SELLER_PROFILE;
+        }
+    }
 }

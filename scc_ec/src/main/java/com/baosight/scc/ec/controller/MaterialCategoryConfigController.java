@@ -175,6 +175,23 @@ public class MaterialCategoryConfigController extends AbstractController {
     }
 
     /**
+     * 创建form让用户编辑
+     */
+    @RequestMapping(value = "/materialSecondCategory/add/{id}", method = RequestMethod.GET)
+    public String addSecondCategoryForm(@PathVariable("id") String id,Model uiModel) {
+        MaterialCategory secondCategory = new MaterialCategory();
+        MaterialCategory parent = new MaterialCategory();
+        parent.setId(id);
+        secondCategory.setParentCategory(parent);
+        List<MaterialCategory> firstCategoryList = materialCategoryService.findFirstCategoryByIsValid(0);
+        List<MaterialCategory> secondCategoryList = materialCategoryService.findSecondCategoryByParentCategory(parent);
+        uiModel.addAttribute("secondCategory",secondCategory);
+        uiModel.addAttribute("firstCategoryList",firstCategoryList);
+        uiModel.addAttribute("secondCategoryList",secondCategoryList);
+        return SECOND_EDIT;
+    }
+
+    /**
      * 提交广告信息表单,根据提交信息中的id是否有值来进行insert和update操作
      * @param uiModel
      * @param secondCategory

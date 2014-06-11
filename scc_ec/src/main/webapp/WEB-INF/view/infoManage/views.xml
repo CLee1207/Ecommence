@@ -6,7 +6,7 @@
 
     <!-- Default Main Template -->
     <!--信息中心，主要处理广告和资讯页面跳转 -->
-    <definition name="information_mainTemplate" template="/WEB-INF/templates/bamCenterMain.jsp">
+    <definition name="information_mainTemplate" template="/WEB-INF/view/template/bamCenterMain.jsp">
     </definition>
 
     <!--广告添加-->
