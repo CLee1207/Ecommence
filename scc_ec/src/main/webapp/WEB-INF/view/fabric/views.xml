@@ -12,7 +12,7 @@
         <put-attribute name="newItem" value="/WEB-INF/view/fabric/newItem.jsp"></put-attribute>
     </definition>
 
-    <!--我发布的面料列表-->
+    <!--我发布的列表-->
     <definition name="fabric_list" extends="list_template">
         <put-attribute name="main" value="/WEB-INF/view/fabric/itemList.jsp"></put-attribute>
         <put-list-attribute name="script">
@@ -21,10 +21,23 @@
         </put-list-attribute>
     </definition>
 
-    <!--面料详细 template-->
-    <definition name="fabric_view" template="/WEB-INF/view/template/detail-view.jsp">
+    <!--detail template-->
+    <definition name="item_view_template" template="/WEB-INF/view/template/detail-view.jsp">
         <put-attribute name="header" value="/WEB-INF/view/template/header.jsp"></put-attribute>
         <put-attribute name="footer" value="/WEB-INF/view/template/footer.jsp"></put-attribute>
+        <put-attribute name="ProviderInfo" value="/WEB-INF/view/fabric/ProviderInfo.jsp"></put-attribute>
+        <put-attribute name="category" value="/WEB-INF/view/fabric/category.jsp"></put-attribute>
+        <put-attribute name="newItem" value="/WEB-INF/view/fabric/newItem.jsp"></put-attribute>
+    </definition>
+
+    <!--fabric detail-->
+    <definition name="fabric_detail" extends="item_view_template">
+        <put-attribute name="detail" value="/WEB-INF/view/fabric/itemDetail.jsp"></put-attribute>
+        <put-attribute name="main" value="/WEB-INF/view/fabric/itemMain.jsp"></put-attribute>
+        <put-list-attribute name="script">
+            <add-attribute value="/resources/js/demandOrderList.js"></add-attribute>
+            <add-attribute value="/resources/js/item/itemList.js"></add-attribute>
+        </put-list-attribute>
     </definition>
 
     <!--收藏的商品-->

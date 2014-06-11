@@ -46,7 +46,7 @@ public class FabricController extends AbstractController{
     //跳转列表
     private final static String REDIRECT_LIST = "redirect:/sellerCenter/fabrics";
     //详细页面
-    private final static String FABRIC_VIEW = "fabric_view";
+    private final static String FABRIC_VIEW = "fabric_detail";
     //无权限
     private final static String FIVE_HUNDRED = "fiveHundred";
     //面料交易记录列表页面

@@ -31,9 +31,13 @@
 <div class="container">
     <div class="row-12">
         <div class="col-3">
-            <tiles:insertAttribute name="menu"/>
+            <div class="sidebar">
+                <tiles:insertAttribute name="ProviderInfo"/>
+                <tiles:insertAttribute name="category"/>
+            </div>
         </div>
         <div class="col-9">
+            <tiles:insertAttribute name="detail"/>
             <tiles:insertAttribute name="main"/>
         </div>
     </div>
