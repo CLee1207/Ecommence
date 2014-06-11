@@ -19,8 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by ThinkPad on 2014/5/6.
@@ -41,6 +40,8 @@ public class FabricController extends AbstractController{
     private FabricSourceService sourceService;
     @Autowired
     private FavouriteItemsService favouriteItemsService;
+    @Autowired
+    private OrderLineService orderLineService;
 
     final Logger logger = LoggerFactory.getLogger(FabricController.class);
 
@@ -52,7 +53,7 @@ public class FabricController extends AbstractController{
     //无权限
     private final static String FIVE_HUNDRED = "fiveHundred";
     //面料交易记录列表页面
-    private final static String FABRIC_ORDERS = "fabric_orders";
+    private final static String FABRIC_ORDERS = "fabric/bidList";
     //面料交易评价列表页面
     private final static String FABRIC_COMMENTS = "fabric_comments";
 
@@ -60,11 +61,26 @@ public class FabricController extends AbstractController{
     public String view(@PathVariable("id") String id, Model uiModel) {
         Fabric fabric = fabricService.findById(id);
         List<FabricCategory> categories=categoryService.findAllFirstCategory();
+        sortFabricRanges(fabric);
         uiModel.addAttribute("fabric", fabric);
         uiModel.addAttribute("categories", categories);
         return FABRIC_VIEW;
     }
 
+    public void sortFabricRanges(Fabric fabric){
+        fabric.setRanges(new TreeMap<Double, Double>(fabric.getRanges()));
+        Map<Double,Double> ranges=fabric.getRanges();
+        Map<String ,Double> result=fabric.getShowRanges();
+        Set<Double> set=ranges.keySet();
+        Double[] keys=set.toArray(new Double[]{});
+        if(keys.length>1) {
+            result.put(keys[0].toString(),ranges.get(keys[0]));
+            for (int j = 1; j < keys.length - 1; j++) {
+                result.put(keys[j].toString() + "～" + keys[j + 1].toString(), ranges.get(keys[j]));
+            }
+            result.put(keys[keys.length-1].toString(),ranges.get(keys[keys.length-1]));
+        }
+    }
 
     /*
         通过主键获取到登入用户希望修改的面料信息
@@ -207,7 +223,7 @@ public class FabricController extends AbstractController{
 		else
 		    pageRequest = new PageRequest(0, size, sort);
 		//获取交易记录数据
-		Page<OrderLine> fabricPage = this.fabricService.showFabricOrdersByFid(id, pageRequest);
+		Page<OrderLine> fabricPage = orderLineService.showFabricOrdersByFid(id, pageRequest);
 		EcGrid<OrderLine> grid = new EcGrid<OrderLine>();
 		grid.setCurrentPage(fabricPage.getNumber() + 1);
 		grid.setEcList(Lists.newArrayList(fabricPage));
@@ -215,7 +231,7 @@ public class FabricController extends AbstractController{
 		grid.setTotalRecords(fabricPage.getTotalElements());
 		//传递数据到页面
 		uiModel.addAttribute("grid", grid);
-    	return this.FABRIC_ORDERS;
+    	return FABRIC_ORDERS;
     }
 
     /**

@@ -1,11 +1,9 @@
 package com.baosight.scc.ec.repository;
 
-import com.baosight.scc.ec.model.Material;
+import com.baosight.scc.ec.model.MaterialCategory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
-
-import com.baosight.scc.ec.model.MaterialCategory;
 
 import java.util.List;
 

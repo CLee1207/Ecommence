@@ -94,6 +94,9 @@ public class Fabric extends Item {
     @Column(name = "price")
     private Map<Double, Double> ranges = new HashMap<Double, Double>();
 
+    @Transient
+    private Map<String ,Double> showRanges=new LinkedHashMap<String, Double>();
+
     private int shipInterval;   //发货时间
 
     @ElementCollection
@@ -307,6 +310,14 @@ public class Fabric extends Item {
 
     public void setItemNumber(String itemNumber) {
         this.itemNumber = itemNumber;
+    }
+
+    public Map<String, Double> getShowRanges() {
+        return showRanges;
+    }
+
+    public void setShowRanges(Map<String, Double> showRanges) {
+        this.showRanges = showRanges;
     }
 
     public void validateSelectCategory(ValidationContext context) {

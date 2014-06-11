@@ -8,6 +8,7 @@ import com.baosight.scc.ec.service.OrderLineService;
 import com.baosight.scc.ec.utils.GuidUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -50,5 +51,16 @@ public class OrderLineServiceImpl implements OrderLineService{
         TypedQuery<Long> query=em.createNamedQuery("OrderLine.countByStateAndItem",Long.class);
         query.setParameter("item",item);
         return query.getSingleResult()>0;
+    }
+
+    @Transactional(readOnly = true)
+    public Page<OrderLine> showFabricOrdersByFid(String id, Pageable pageable) {
+        Item item=new Item();
+        item.setId(id);
+        TypedQuery<OrderLine> query=em.createNamedQuery("OrderLine.findByItem",OrderLine.class);
+        query.setParameter("item", item);
+        List<OrderLine> lines=query.getResultList();
+        Long count=or.countByItem(item);
+        return new PageImpl<OrderLine>(lines,pageable,count);
     }
 }

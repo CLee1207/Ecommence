@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- /.Detail Info -->
 <div class="detail-info">
     <div class="row-2">
@@ -13,11 +14,9 @@
             <div class="magnifier">
                 <div class="magnifier-view central"><img src="/resources/pic/designer.png"></div>
                 <ul class="magnifier-menu">
-                    <li data-url="/resources/pic/avatar.jpg"><img src="/resources/pic/logo.jpg"></li>
-                    <li data-url="/resources/pic/comp.png"><img src="/resources/pic/logo.png"></li>
-                    <li data-url="/resources/pic/tpm-avatar.png"><img src="/resources/pic/logo.jpg"></li>
-                    <li data-url="/resources/pic/model.jpg"><img src="/resources/pic/logo.png"></li>
-                    <li data-url="/resources/pic/black-bg.png"><img src="/resources/pic/logo.jpg"></li>
+                    <c:forEach items="${fabric.images}" var="image">
+                        <li data-url="${image.location600}"><img src="${image.location300}"></li>
+                    </c:forEach>
                 </ul>
             </div>
         </div>
@@ -31,15 +30,17 @@
                 <li>
                     <label>起订量（码）：</label>
 									<span>
-										<bdo>1~499</bdo>
-										<bdo>≥500</bdo>
+                                        <c:forEach items="${fabric.showRanges}" var="range">
+                                            ${range.key}
+                                        </c:forEach>
 									</span>
                 </li>
                 <li>
                     <label>价格：</label>
 									<span>
-										<bdo><b class="price orange font-20">22</b>/码</bdo>
-										<bdo><b class="price orange font-20">24</b>/码</bdo>
+                                        <c:forEach items="${fabric.ranges}" var="range">
+                                            <bdo><b class="price orange font-20"> ${range.value}</b>/码</bdo>
+                                        </c:forEach>
 									</span>
                 </li>
                 <li>

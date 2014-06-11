@@ -148,7 +148,9 @@ public class MaterialCategoryServiceImpl implements MaterialCategoryService {
 
     @Override
     public List<MaterialCategory> findSecondCategoryByParentCategory(MaterialCategory materialCategory) {
-        return mr.findByParentCategory(materialCategory);
+        TypedQuery<MaterialCategory> query=em.createNamedQuery("MaterialCategory.findByParentCategory",MaterialCategory.class);
+        query.setParameter("category",materialCategory);
+        return query.getResultList();
     }
 
     @Override
