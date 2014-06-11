@@ -425,6 +425,16 @@ CREATE TABLE T_ec_sellerCredit (
   FOREIGN KEY (user_id) REFERENCES T_ec_EcUser (id)
 );
 
+--综合评分
+CREATE  TABLE T_ec_Composite_Score(
+  id                  INT GENERATED ALWAYS AS IDENTITY ( START WITH 1 INCREMENT BY 1),
+  user_id             CHAR(36), --卖家id
+  score               DOUBLE  DEFAULT 0,
+  createdTime         TIMESTAMP,
+  primary key (id),
+  foreign key (user_id) references T_ec_EcUser(id)
+);
+
 
 
 
