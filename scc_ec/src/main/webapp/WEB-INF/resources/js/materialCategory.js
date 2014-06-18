@@ -11,7 +11,7 @@ $(function(){
             console.log("doesn't find id in this page!");
             return false;
         }else{
-            window.location.href =  "/systemConfig/materialFirstCategory/edit/"+id;
+            window.location.href =  "/admin/materialFirstCategory/edit/"+id;
         }
     });
 
@@ -24,7 +24,7 @@ $(function(){
             console.log("doesn't find id in this page!");
             return false;
         }else{
-            window.location.href =  "/systemConfig/materialSecondCategory/edit/"+id;
+            window.location.href =  "/admin/materialSecondCategory/edit/"+id;
         }
     });
 

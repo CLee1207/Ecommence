@@ -17,7 +17,7 @@ $(function(){
         }else{
             $.ajax({
                 type: "POST",
-                url: "/informationCenter/advertisementPosition?add",
+                url: "/admin/advertisementPosition?add",
                 data:{
                     id:id,
                     positionNo:positionNo,
@@ -27,7 +27,7 @@ $(function(){
                 success:function(data){
                     $("#id").val(data.id);
                     console.log(data);
-                    window.location.href="/informationCenter/advertisementPosition";
+                    window.location.href="/admin/advertisementPosition";
                 }
             });
         }
@@ -43,7 +43,7 @@ $(function(){
         }else{
             $.ajax({
                 type: "POST",
-                url: "/informationCenter/advertisementPosition?view",
+                url: "/admin/advertisementPosition?view",
                 data:{
                     id:id
                 },
@@ -73,7 +73,7 @@ $(function(){
         }else{
             $.ajax({
                 type: "POST",
-                url: "/informationCenter/advertisementPosition?delete",
+                url: "/admin/advertisementPosition?delete",
                 data:{
                     id:id
                 },
@@ -106,7 +106,7 @@ $(function(){
             console.log("doesn't find id in this page!");
             return false;
         }else{
-            window.location.href =  "/informationCenter/advertisement/"+id;
+            window.location.href =  "/admin/advertisement/"+id;
         }
     });
     /**
@@ -118,7 +118,7 @@ $(function(){
             console.log("doesn't find id in this page!");
             return false;
         }else{
-            window.location.href =  "/informationCenter/advertisement/edit/"+id;
+            window.location.href =  "/admin/advertisement/edit/"+id;
         }
     });
 
@@ -133,7 +133,7 @@ $(function(){
         }else{
             $.ajax({
                 type: "POST",
-                url: "/informationCenter/advertisement?delete",
+                url: "/admin/advertisement?delete",
                 data:{
                     id:id
                 },
@@ -160,7 +160,7 @@ $(function(){
         }else{
             $.ajax({
                 type: "POST",
-                url: "/informationCenter/informationCategory?add",
+                url: "/admin/informationCategory?add",
                 data:{
                     id:id,
                     categoryName:categoryName
@@ -168,7 +168,7 @@ $(function(){
                 success:function(data){
                     $("#id").val(data.id);
                     console.log(data);
-                    window.location.href="/informationCenter/informationCategory";
+                    window.location.href="/admin/informationCategory";
                 }
             });
         }
@@ -184,7 +184,7 @@ $(function(){
         }else{
             $.ajax({
                 type: "POST",
-                url: "/informationCenter/informationCategory?view",
+                url: "/admin/informationCategory?view",
                 data:{
                     id:id
                 },
@@ -212,7 +212,7 @@ $(function(){
         }else{
             $.ajax({
                 type: "POST",
-                url: "/informationCenter/informationCategory?delete",
+                url: "/admin/informationCategory?delete",
                 data:{
                     id:id
                 },
@@ -243,7 +243,7 @@ $(function(){
             console.log("doesn't find id in this page!");
             return false;
         }else{
-            window.location.href =  "/informationCenter/information/"+id;
+            window.location.href =  "/admin/information/"+id;
         }
     });
     /**
@@ -255,7 +255,7 @@ $(function(){
             console.log("doesn't find id in this page!");
             return false;
         }else{
-            window.location.href =  "/informationCenter/information/edit/"+id;
+            window.location.href =  "/admin/information/edit/"+id;
         }
     });
 
@@ -270,7 +270,7 @@ $(function(){
         }else{
             $.ajax({
                 type: "POST",
-                url: "/informationCenter/information?delete",
+                url: "/admin/information?delete",
                 data:{
                     id:id
                 },

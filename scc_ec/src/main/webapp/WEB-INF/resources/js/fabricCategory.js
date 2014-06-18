@@ -11,7 +11,7 @@ $(function(){
             console.log("doesn't find id in this page!");
             return false;
         }else{
-            window.location.href =  "/systemConfig/firstCategory/edit/"+id;
+            window.location.href =  "/admin/fabricFirstCategory/edit/"+id;
         }
     });
 
@@ -24,7 +24,7 @@ $(function(){
             console.log("doesn't find id in this page!");
             return false;
         }else{
-            window.location.href =  "/systemConfig/secondCategory/edit/"+id;
+            window.location.href =  "/admin/fabricSecondCategory/edit/"+id;
         }
     });
 
@@ -37,7 +37,7 @@ $(function(){
             console.log("doesn't find id in this page!");
             return false;
         }else{
-            window.location.href =  "/systemConfig/firstSource/edit/"+id;
+            window.location.href =  "/admin/firstSource/edit/"+id;
         }
     });
 
@@ -50,7 +50,7 @@ $(function(){
             console.log("doesn't find id in this page!");
             return false;
         }else{
-            window.location.href =  "/systemConfig/secondSource/edit/"+id;
+            window.location.href =  "/admin/secondSource/edit/"+id;
         }
     });
     $("#cancelBtn").click(function(){

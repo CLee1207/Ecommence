@@ -23,6 +23,20 @@ var dom = {
 	]
 	[ !!~window.navigator.userAgent.toLowerCase().indexOf('mobile') ? 0 : 1 ];
 
+$.extend({
+	jump: ~function(){
+		dom.doc.on(events.click, function(e){
+			var target = e.target, href = target.getAttribute('href');
+			if( href ){
+				if( target.tagName == 'A' ){
+					return true;
+				}
+				window.location.href = location.protocol + '//' + location.host + '/' + href.replace(/^\//, '');
+			}
+		});
+	}()
+});
+
 $.fn.extend({
 	// 弹出层
 	dialog: function(options){

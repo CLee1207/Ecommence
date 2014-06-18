@@ -3,7 +3,7 @@
  */
 //123
 $(function () {
-    $('a').click(function (event) {
+    $('a.down').click(function (event) {
         var src = $(this);
         var id = src.attr('data-id');
         $.ajax({

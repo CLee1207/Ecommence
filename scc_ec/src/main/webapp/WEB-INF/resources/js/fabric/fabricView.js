@@ -70,7 +70,22 @@ $(function () {
         }
     });
 
-    $('ul.pagination a').click(function(event){
+    $('#li-commentList').click(function () {
+        var source = $(this);
+        var id = source.attr('data-id');
+        var $dd=$('dl.detail-main dd').eq(2);
+        if($dd.children('table').length==0) {
+            $.ajax({
+                url: '/fabric/' + id + '/comments',
+                method: 'get',
+                success: function (data) {
+                    $dd.append(data);
+                }
+            });
+        }
+    });
+
+    $('#dd-bidList a').click(function(event){
         event.preventDefault();
         var source=$(this);
         var url=source.attr('data-url');
